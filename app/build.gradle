@@ -1,17 +1,19 @@
+import com.quyunshuo.androidbaseframemvvm.build.*
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.1"
+    compileSdkVersion BuildConfig.compileSdkVersion
+    buildToolsVersion BuildConfig.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.quyunshuo.androidbaseframemvvm"
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        applicationId BuildConfig.applicationId
+        minSdkVersion BuildConfig.minSdkVersion
+        targetSdkVersion BuildConfig.targetSdkVersion
+        versionCode BuildConfig.versionCode
+        versionName BuildConfig.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
