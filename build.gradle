@@ -1,16 +1,15 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+import com.quyunshuo.androidbaseframemvvm.build.*
+
 buildscript {
-    ext.kotlin_version = "1.4.0"
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url 'https://maven.google.com' }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.1"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath ProjectPluginManager.AndroidToolsPlugin
+        classpath ProjectPluginManager.KotlinPlugin
     }
 }
 

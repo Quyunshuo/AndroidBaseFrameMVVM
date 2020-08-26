@@ -3,6 +3,7 @@ import com.quyunshuo.androidbaseframemvvm.build.*
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion BuildConfig.compileSdkVersion
@@ -14,8 +15,13 @@ android {
         targetSdkVersion BuildConfig.targetSdkVersion
         versionCode BuildConfig.versionCode
         versionName BuildConfig.versionName
+        testInstrumentationRunner AndroidX.AndroidJUnitRunner
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -24,16 +30,45 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation Android.Junit
+    implementation AndroidX.CoreKtx
+    implementation AndroidX.AppCompat
+    implementation AndroidX.ConstraintLayout
+    implementation AndroidX.ActivityKtx
+    implementation AndroidX.FragmentKtx
+    androidTestImplementation AndroidX.TestExtJunit
+    androidTestImplementation AndroidX.TestEspresso
 
+    implementation Kotlin.Kotlin
+    implementation Kotlin.CoroutinesCore
+    implementation Kotlin.CoroutinesAndroid
+
+    implementation JetPack.LifecycleRuntimeKtx
+    implementation JetPack.LifecycleViewModel
+    implementation JetPack.LifecycleViewModelKtx
+    implementation JetPack.HiltLifecycleViewModel
+    implementation JetPack.HiltDaggerAndroid
+    kapt JetPack.HiltDaggerCompiler
+    kapt JetPack.Hilt
+
+    implementation GitHub.OkHttp
+    implementation GitHub.OkHttpInterceptorLogging
+    implementation GitHub.Retrofit
+    implementation GitHub.RetrofitConverterGson
+    implementation GitHub.Gson
+    implementation GitHub.MMKV
+    implementation GitHub.AutoSize
+    implementation GitHub.Glide
+    kapt GitHub.GlideCompiler
+    implementation GitHub.ARoute
+    kapt GitHub.ARouteCompiler
+    implementation GitHub.RecyclerViewAdapter
 }
