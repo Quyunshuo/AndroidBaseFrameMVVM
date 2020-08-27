@@ -76,7 +76,7 @@ dependencies {
     testImplementation Android.Junit
     androidTestImplementation AndroidX.TestExtJunit
     androidTestImplementation AndroidX.TestEspresso
-    api JetPack.HiltDaggerAndroid
+    implementation JetPack.HiltDaggerAndroid
     kapt JetPack.HiltDaggerCompiler
     kapt JetPack.Hilt
 }
