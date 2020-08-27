@@ -1,7 +1,7 @@
 package com.quyunshuo.main
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.quyunshuo.common.ui.BaseActivity
+import com.quyunshuo.main.databinding.MainActivityMainBinding
 
 /**
  * @Author: QuYunShuo
@@ -9,9 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
  * @Class: MainActivity
  * @Remark: 主界面Activity
  */
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity_main)
+class MainActivity : BaseActivity<MainActivityMainBinding>() {
+
+    override fun initViewBinding(): MainActivityMainBinding =
+        MainActivityMainBinding.inflate(layoutInflater)
+
+    override fun initView() {
+        mBinding.mTv.text = "Hello MVVM"
     }
 }
