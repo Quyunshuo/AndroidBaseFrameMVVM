@@ -12,11 +12,15 @@ object Version {
     const val TestEspresso = "3.3.0"
     const val ActivityKtx = "1.1.0"
     const val FragmentKtx = "1.2.5"
+    const val MultiDex = "2.0.1"
+
     // Android---------------------------------------------------------------
     const val Junit = "4.13"
+
     // Kotlin----------------------------------------------------------------
     const val Kotlin = "1.4.0"
     const val Coroutines = "1.3.7"                      // 协程
+
     // JetPack---------------------------------------------------------------
     const val LifecycleViewModel = "2.2.0"
     const val LifecycleRuntimeKtx = "2.2.0"
@@ -24,6 +28,7 @@ object Version {
     const val Hilt = "1.0.0-alpha02"                    // Hilt 依赖注入
     const val HiltLifecycleViewModel = "1.0.0-alpha02"
     const val HiltDagger = "2.28-alpha"
+
     // GitHub----------------------------------------------------------------
     const val OkHttp = "3.14.9"                         // OkHttp
     const val OkHttpInterceptorLogging = "3.12.0"       // OkHttp 请求Log拦截器
@@ -48,6 +53,7 @@ object AndroidX {
     const val TestEspresso = "androidx.test.espresso:espresso-core:${Version.TestEspresso}"
     const val ActivityKtx = "androidx.activity:activity-ktx:${Version.ActivityKtx}"
     const val FragmentKtx = "androidx.fragment:fragment-ktx:${Version.FragmentKtx}"
+    const val MultiDex = "androidx.multidex:multidex:${Version.MultiDex}"
 }
 
 object Android {

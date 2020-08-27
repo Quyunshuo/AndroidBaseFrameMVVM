@@ -3,7 +3,6 @@ import com.quyunshuo.androidbaseframemvvm.build.*
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion BuildConfig.compileSdkVersion
@@ -16,59 +15,63 @@ android {
         versionCode BuildConfig.versionCode
         versionName BuildConfig.versionName
         testInstrumentationRunner AndroidX.AndroidJUnitRunner
+    }
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
+//    signingConfigs {
+//        releaseConfig {
+//            storeFile file('')
+//            storePassword ""
+//            keyAlias ""
+//            keyPassword ""
+//        }
+//    }
+
+    buildTypes {
+        release {
+//            signingConfig signingConfigs.releaseConfig
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    if (outputFileName != null
+                            && outputFileName.endsWith('.apk')
+                            && 'release' == variant.buildType.name) {
+                        outputFileName = "${BuildConfig.applicationId}_${defaultConfig.versionCode}(${defaultConfig.versionName}).apk"
+                    }
+                }
+            }
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    if (outputFileName != null
+                            && outputFileName.endsWith('.apk')
+                            && 'debug' == variant.buildType.name) {
+                        outputFileName = "${BuildConfig.applicationId}_${defaultConfig.versionCode}(${defaultConfig.versionName}).apk"
+                    }
+                }
             }
         }
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    viewBinding {
-        enabled = true
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    testImplementation Android.Junit
-    implementation AndroidX.CoreKtx
-    implementation AndroidX.AppCompat
-    implementation AndroidX.ConstraintLayout
-    implementation AndroidX.ActivityKtx
-    implementation AndroidX.FragmentKtx
-    androidTestImplementation AndroidX.TestExtJunit
-    androidTestImplementation AndroidX.TestEspresso
-
-    implementation Kotlin.Kotlin
-    implementation Kotlin.CoroutinesCore
-    implementation Kotlin.CoroutinesAndroid
-
-    implementation JetPack.LifecycleRuntimeKtx
-    implementation JetPack.LifecycleViewModel
-    implementation JetPack.LifecycleViewModelKtx
-    implementation JetPack.HiltLifecycleViewModel
-    implementation JetPack.HiltDaggerAndroid
-    kapt JetPack.HiltDaggerCompiler
-    kapt JetPack.Hilt
-
-    implementation GitHub.OkHttp
-    implementation GitHub.OkHttpInterceptorLogging
-    implementation GitHub.Retrofit
-    implementation GitHub.RetrofitConverterGson
-    implementation GitHub.Gson
-    implementation GitHub.MMKV
-    implementation GitHub.AutoSize
-    implementation GitHub.Glide
-    kapt GitHub.GlideCompiler
-    implementation GitHub.ARoute
-    kapt GitHub.ARouteCompiler
-    implementation GitHub.RecyclerViewAdapter
+    implementation AndroidX.MultiDex
+    if (!BuildConfig.isAppMode) {
+        implementation project(path: ':Lib_Main')
+    } else {
+        implementation project(path: ':Lib_Base')
+    }
 }
