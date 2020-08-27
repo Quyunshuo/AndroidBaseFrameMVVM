@@ -1,7 +1,7 @@
 package com.quyunshuo.androidbaseframemvvm
 
 import androidx.multidex.MultiDex
-import com.quyunshuo.base.BaseApplication
+import com.quyunshuo.common.CommonApplication
 
 /**
  * @Author: QuYunShuo
@@ -9,10 +9,10 @@ import com.quyunshuo.base.BaseApplication
  * @Class: AppApplication
  * @Remark: 壳App的Application 负责需要写在App包下的初始化逻辑
  */
-class AppApplication : BaseApplication() {
+class AppApplication : CommonApplication() {
 
     override fun onCreate() {
-        super.onCreate()
         MultiDex.install(this)
+        super.onCreate()
     }
 }

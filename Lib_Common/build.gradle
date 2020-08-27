@@ -28,7 +28,7 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    resourcePrefix "base_"
+    resourcePrefix "common_"
 }
 
 kapt {
@@ -40,33 +40,9 @@ kapt {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-    api AndroidX.CoreKtx
-    api AndroidX.AppCompat
-    api AndroidX.ConstraintLayout
-    api AndroidX.ActivityKtx
-    api AndroidX.FragmentKtx
+    api project(path: ':Lib_Base')
 
-    api Kotlin.Kotlin
-    api Kotlin.CoroutinesCore
-    api Kotlin.CoroutinesAndroid
-
-    api JetPack.LifecycleRuntimeKtx
-    api JetPack.LifecycleViewModel
-    api JetPack.LifecycleViewModelKtx
-    api JetPack.HiltLifecycleViewModel
-    api JetPack.HiltDaggerAndroid
-
-    api GitHub.OkHttp
-    api GitHub.OkHttpInterceptorLogging
-    api GitHub.Retrofit
-    api GitHub.RetrofitConverterGson
-    api GitHub.Gson
-    api GitHub.MMKV
-    api GitHub.AutoSize
-    api GitHub.Glide
-    api GitHub.ARoute
-    api GitHub.RecyclerViewAdapter
-
+    implementation JetPack.HiltDaggerAndroid
     kapt JetPack.HiltDaggerCompiler
     kapt JetPack.Hilt
     kapt GitHub.GlideCompiler

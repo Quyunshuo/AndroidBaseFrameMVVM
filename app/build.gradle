@@ -72,6 +72,6 @@ dependencies {
     if (!BuildConfig.isAppMode) {
         implementation project(path: ':Lib_Main')
     } else {
-        implementation project(path: ':Lib_Base')
+        implementation project(path: ':Lib_Common')
     }
 }
