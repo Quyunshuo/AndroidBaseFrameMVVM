@@ -18,6 +18,7 @@ abstract class BaseFrameActivity<VB : ViewBinding> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = initViewBinding()
         setContentView(mBinding.root)
+        initView()
     }
 
     protected abstract fun initViewBinding(): VB

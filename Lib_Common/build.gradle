@@ -4,7 +4,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion BuildConfig.compileSdkVersion
@@ -42,9 +41,6 @@ dependencies {
 
     api project(path: ':Lib_Base')
 
-    implementation JetPack.HiltDaggerAndroid
-    kapt JetPack.HiltDaggerCompiler
-    kapt JetPack.Hilt
     kapt GitHub.GlideCompiler
     kapt GitHub.ARouteCompiler
 }

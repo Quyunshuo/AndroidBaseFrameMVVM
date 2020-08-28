@@ -25,9 +25,6 @@ object Version {
     const val LifecycleViewModel = "2.2.0"
     const val LifecycleRuntimeKtx = "2.2.0"
     const val LifecycleViewModelKtx = "2.2.0"
-    const val Hilt = "1.0.0-alpha02"                    // Hilt 依赖注入
-    const val HiltLifecycleViewModel = "1.0.0-alpha02"
-    const val HiltDagger = "2.28-alpha"
 
     // GitHub----------------------------------------------------------------
     const val OkHttp = "3.14.9"                         // OkHttp
@@ -67,12 +64,6 @@ object JetPack {
         "androidx.lifecycle:lifecycle-runtime-ktx:${Version.LifecycleRuntimeKtx}"
     const val LifecycleViewModelKtx =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.LifecycleViewModelKtx}"
-    const val Hilt = "androidx.hilt:hilt-compiler:${Version.Hilt}"
-    const val HiltLifecycleViewModel =
-        "androidx.hilt:hilt-lifecycle-viewmodel:${Version.HiltLifecycleViewModel}"
-    const val HiltDaggerAndroid = "com.google.dagger:hilt-android:${Version.HiltDagger}"
-    const val HiltDaggerCompiler =
-        "com.google.dagger:hilt-android-compiler:${Version.HiltDagger}"
 }
 
 object Kotlin {

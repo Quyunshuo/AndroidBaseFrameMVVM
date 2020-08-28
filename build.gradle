@@ -10,7 +10,6 @@ buildscript {
     dependencies {
         classpath ProjectPluginManager.AndroidToolsPlugin
         classpath ProjectPluginManager.KotlinPlugin
-        classpath ProjectPluginManager.DaggerHiltPlugin
     }
 }
 

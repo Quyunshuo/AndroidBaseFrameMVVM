@@ -4,7 +4,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion BuildConfig.compileSdkVersion
@@ -57,8 +56,6 @@ dependencies {
     api JetPack.LifecycleRuntimeKtx
     api JetPack.LifecycleViewModel
     api JetPack.LifecycleViewModelKtx
-    api JetPack.HiltLifecycleViewModel
-    api JetPack.HiltDaggerAndroid
 
     api GitHub.OkHttp
     api GitHub.OkHttpInterceptorLogging
@@ -71,8 +68,6 @@ dependencies {
     api GitHub.ARoute
     api GitHub.RecyclerViewAdapter
 
-    kapt JetPack.HiltDaggerCompiler
-    kapt JetPack.Hilt
     kapt GitHub.GlideCompiler
     kapt GitHub.ARouteCompiler
 }

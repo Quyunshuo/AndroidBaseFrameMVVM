@@ -8,7 +8,6 @@ if (BuildConfig.isAppMode) {
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion BuildConfig.compileSdkVersion
@@ -76,7 +75,6 @@ dependencies {
     testImplementation Android.Junit
     androidTestImplementation AndroidX.TestExtJunit
     androidTestImplementation AndroidX.TestEspresso
-    implementation JetPack.HiltDaggerAndroid
-    kapt JetPack.HiltDaggerCompiler
-    kapt JetPack.Hilt
+    kapt GitHub.GlideCompiler
+    kapt GitHub.ARouteCompiler
 }
