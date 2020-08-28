@@ -63,7 +63,7 @@ dependencies {
     api GitHub.RetrofitConverterGson
     api GitHub.Gson
     api GitHub.MMKV
-    api GitHub.AutoSize
+//    api GitHub.AutoSize
     api GitHub.Glide
     api GitHub.ARoute
     api GitHub.RecyclerViewAdapter

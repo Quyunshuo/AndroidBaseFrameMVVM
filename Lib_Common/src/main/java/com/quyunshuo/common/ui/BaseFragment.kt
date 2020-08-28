@@ -1,6 +1,8 @@
 package com.quyunshuo.common.ui
 
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.viewbinding.ViewBinding
+import com.quyunshuo.base.mvvm.v.BaseFrameFragment
 
 /**
  * @Author: QuYunShuo
@@ -8,5 +10,5 @@ import androidx.fragment.app.Fragment
  * @Class: BaseFragment
  * @Remark: 项目相关的Fragment基类
  */
-abstract class BaseFragment : Fragment() {
-}
+abstract class BaseFragment<VB : ViewBinding, VM : ViewModel>(vmClass: Class<VM>) :
+    BaseFrameFragment<VB, VM>(vmClass)

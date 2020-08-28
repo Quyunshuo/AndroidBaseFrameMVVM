@@ -9,4 +9,8 @@ import android.app.Application
  * @Remark: 自定义Application的基类
  */
 open class BaseApplication : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+    }
 }

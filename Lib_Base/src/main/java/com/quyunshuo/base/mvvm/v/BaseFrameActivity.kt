@@ -1,7 +1,9 @@
-package com.quyunshuo.base.ui
+package com.quyunshuo.base.mvvm.v
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 
 /**
@@ -10,13 +12,17 @@ import androidx.viewbinding.ViewBinding
  * @Class: BaseFrameActivity
  * @Remark: Activity基类 与项目无关
  */
-abstract class BaseFrameActivity<VB : ViewBinding> : AppCompatActivity() {
+abstract class BaseFrameActivity<VB : ViewBinding, VM : ViewModel>(private val vmClass: Class<VM>) :
+    AppCompatActivity() {
 
-    lateinit var mBinding: VB
+    protected val mViewModel: VM by lazy(mode = LazyThreadSafetyMode.NONE) {
+        ViewModelProvider(this).get(vmClass)
+    }
+
+    protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) { initViewBinding() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = initViewBinding()
         setContentView(mBinding.root)
         initView()
     }

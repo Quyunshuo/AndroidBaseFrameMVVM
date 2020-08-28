@@ -1,7 +1,8 @@
 package com.quyunshuo.common.ui
 
+import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
-import com.quyunshuo.base.ui.BaseFrameActivity
+import com.quyunshuo.base.mvvm.v.BaseFrameActivity
 
 /**
  * @Author: QuYunShuo
@@ -9,4 +10,5 @@ import com.quyunshuo.base.ui.BaseFrameActivity
  * @Class: BaseActivity
  * @Remark: 项目相关的Activity基类
  */
-abstract class BaseActivity<VB : ViewBinding> : BaseFrameActivity<VB>()
+abstract class BaseActivity<VB : ViewBinding, VM : ViewModel>(vmClass: Class<VM>) :
+    BaseFrameActivity<VB, VM>(vmClass)
