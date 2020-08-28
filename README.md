@@ -1,5 +1,11 @@
 # Android项目框架(组件化 + Kotlin + MVVM + Jetpack )
+
 note: 1. 测试打包脚本
+
+资源文件相关{
+    资源相关文件属于项目相关的，因此需要放在Common组件内，不要放在Base组件里
+    String、Color、Style、layout、drawable、mipmap 公用的 放在Common组件内，不公用的放在各自组件内，命名以各组件的规则命名(build文件设置了规则)
+}
 
 协程相关{
     Activity/Fragment 中 可以使用 lifecycleScope,与Activity/Fragment绑定了生命周期 无需手动取消

@@ -11,8 +11,8 @@ import com.quyunshuo.common.CommonApplication
  */
 class AppApplication : CommonApplication() {
 
-    override fun onCreate() {
+    override fun initialize() {
         MultiDex.install(this)
-        super.onCreate()
+        super.initialize()
     }
 }

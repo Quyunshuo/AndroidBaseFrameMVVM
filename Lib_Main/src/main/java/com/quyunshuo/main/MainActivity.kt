@@ -1,6 +1,10 @@
 package com.quyunshuo.main
 
 import android.widget.Toast
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
+import com.quyunshuo.common.constant.RouteKey
+import com.quyunshuo.common.constant.RouteUrl
 import com.quyunshuo.common.ui.BaseActivity
 import com.quyunshuo.main.databinding.MainActivityMainBinding
 
@@ -10,6 +14,7 @@ import com.quyunshuo.main.databinding.MainActivityMainBinding
  * @Class: MainActivity
  * @Remark: 主界面Activity
  */
+@Route(path = RouteUrl.MainActivity)
 class MainActivity :
     BaseActivity<MainActivityMainBinding, MainViewModel>(MainViewModel::class.java) {
 
@@ -22,5 +27,9 @@ class MainActivity :
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
         mBinding.mBtn.setOnClickListener { mViewModel.getString() }
+        mBinding.mIntentBtn.setOnClickListener {
+            ARouter.getInstance().build(RouteUrl.MainActivity2)
+                .withString(RouteKey.KEY_NAME, "ARouter").navigation()
+        }
     }
 }

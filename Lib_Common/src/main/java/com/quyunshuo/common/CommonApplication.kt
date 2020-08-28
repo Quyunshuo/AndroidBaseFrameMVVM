@@ -8,5 +8,4 @@ import com.quyunshuo.base.BaseApplication
  * @Class: CommonApplication
  * @Remark: 项目相关的Application
  */
-open class CommonApplication : BaseApplication() {
-}
+open class CommonApplication : BaseApplication()

@@ -38,6 +38,7 @@ object Version {
     const val ARoute = "1.5.0"                          // 阿里路由
     const val ARouteCompiler = "1.2.2"                  // 阿里路由 APT
     const val RecyclerViewAdapter = "3.0.4"             // RecyclerViewAdapter
+    const val StatusBar = "1.5.1"                       // 状态栏
 }
 
 object AndroidX {
@@ -89,4 +90,5 @@ object GitHub {
     const val ARouteCompiler = "com.alibaba:arouter-compiler:${Version.ARouteCompiler}"
     const val RecyclerViewAdapter =
         "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Version.RecyclerViewAdapter}"
+    const val StatusBar = "com.jaeger.statusbarutil:library:${Version.StatusBar}"
 }

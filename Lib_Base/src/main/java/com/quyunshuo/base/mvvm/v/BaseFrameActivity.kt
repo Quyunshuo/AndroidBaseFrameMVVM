@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.alibaba.android.arouter.launcher.ARouter
 
 /**
  * @Author: QuYunShuo
@@ -24,6 +25,8 @@ abstract class BaseFrameActivity<VB : ViewBinding, VM : ViewModel>(private val v
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mBinding.root)
+        // ARouter 依赖注入
+        ARouter.getInstance().inject(this)
         initView()
     }
 
