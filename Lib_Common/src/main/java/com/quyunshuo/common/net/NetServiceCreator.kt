@@ -1,7 +1,9 @@
 package com.quyunshuo.common.net
 
+import com.quyunshuo.base.BaseApplication
 import com.quyunshuo.base.BuildConfig
 import com.quyunshuo.common.constant.NetUrl
+import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -32,10 +34,11 @@ object NetServiceCreator {
 
     private val okHttpClient by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
         OkHttpClient.Builder()
-            .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)     // 连接超时
-            .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)           // 读取超时
-            .addInterceptor(if (BuildConfig.DEBUG) BODY else NONE)  // 请求日志拦截器
-            .retryOnConnectionFailure(true)   // 失败重连
+            .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)         // 连接超时
+            .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)               // 读取超时
+            .addInterceptor(if (BuildConfig.DEBUG) BODY else NONE)      // 请求日志拦截器
+            .addInterceptor(ChuckInterceptor(BaseApplication.context))  // 请求日志拦截器(UI)
+            .retryOnConnectionFailure(true)       // 失败重连
             .build()
     }
 

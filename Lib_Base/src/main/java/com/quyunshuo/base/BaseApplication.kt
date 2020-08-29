@@ -15,8 +15,14 @@ import com.tencent.bugly.crashreport.CrashReport
  */
 open class BaseApplication : Application() {
 
+    companion object {
+        // 全局Context
+        lateinit var context: Context
+    }
+
     override fun onCreate() {
         super.onCreate()
+        context = applicationContext
         initialize()
     }
 

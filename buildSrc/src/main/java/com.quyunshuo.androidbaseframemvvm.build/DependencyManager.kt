@@ -43,6 +43,7 @@ object Version {
     const val Bugly = "3.2.33"                          // Bugly 异常上报
     const val PermissionX = "1.3.0"                     // 权限申请
     const val LeakCanary = "2.4"                        // 检测内存泄漏
+    const val Chuck = "1.1.0"                           // OkHttp 请求信息拦截器(UI)
 }
 
 object AndroidX {
@@ -100,4 +101,5 @@ object GitHub {
     const val Bugly = "com.tencent.bugly:crashreport:${Version.Bugly}"
     const val PermissionX = "com.permissionx.guolindev:permissionx:${Version.PermissionX}"
     const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:${Version.LeakCanary}"
+    const val Chuck = "com.readystatesoftware.chuck:library:${Version.Chuck}"
 }

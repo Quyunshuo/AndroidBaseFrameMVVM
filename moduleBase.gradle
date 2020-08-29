@@ -79,4 +79,5 @@ dependencies {
     kapt GitHub.GlideCompiler
     kapt GitHub.ARouteCompiler
     kapt GitHub.EventBusAPT
+    debugImplementation GitHub.Chuck
 }
