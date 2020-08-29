@@ -1,5 +1,0 @@
-apply from: '../moduleBase.gradle'
-
-android {
-    resourcePrefix "main_"
-}

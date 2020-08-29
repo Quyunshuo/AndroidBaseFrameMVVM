@@ -1,7 +1,5 @@
 # Android项目框架(组件化 + Kotlin + MVVM + Jetpack )
 
-note: 1. 对比开源项目flow的封装
-
 资源文件相关{
     资源相关文件属于项目相关的，因此需要放在Common组件内，不要放在Base组件里
     String、Color、Style、layout、drawable、mipmap 公用的 放在Common组件内，不公用的放在各自组件内，命名以各组件的规则命名(build文件设置了规则)

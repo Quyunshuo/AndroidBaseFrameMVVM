@@ -6,11 +6,4 @@ package com.quyunshuo.common.constant
  * @Class: RoutePath
  * @Remark: 路由地址
  */
-object RouteUrl {
-
-    // MainActivity
-    const val MainActivity: String = "/lib_splash/SplashActivity"
-
-    // MainActivity2
-    const val MainActivity2: String = "/lib_splash/SplashActivity2"
-}
+object RouteUrl

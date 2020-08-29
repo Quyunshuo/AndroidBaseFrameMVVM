@@ -1,7 +1,6 @@
 package com.quyunshuo.common.net
 
 import com.quyunshuo.common.net.api.ApiCommonService
-import com.quyunshuo.common.net.api.ApiHomeService
 
 /**
  * @Author: QuYunShuo
@@ -10,11 +9,6 @@ import com.quyunshuo.common.net.api.ApiHomeService
  * @Remark: 对ApiService动态代理对象统一管理
  */
 object NetRequest {
-
-    // Home Service
-    val homeService by lazy(mode = LazyThreadSafetyMode.NONE) {
-        NetServiceCreator.create(ApiHomeService::class.java)
-    }
 
     // 公共接口
     val commonService by lazy(mode = LazyThreadSafetyMode.NONE) {

@@ -40,11 +40,8 @@ open class BaseApplication : Application() {
         }
         ARouter.init(this)
 
-//        // 屏幕适配 AndroidAutoSize 以横屏高度为基准进行适配
-//        AutoSizeConfig.getInstance().isBaseOnWidth = false
-
         // Bugly 初始化 第三个参数为SDK调试模式开关
-        CrashReport.initCrashReport(this, "c5a9b1304f", BuildConfig.DEBUG)
+        CrashReport.initCrashReport(this, "申请的id", BuildConfig.DEBUG)
     }
 
     override fun attachBaseContext(base: Context?) {

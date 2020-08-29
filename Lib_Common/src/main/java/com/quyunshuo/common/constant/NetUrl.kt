@@ -6,6 +6,4 @@ package com.quyunshuo.common.constant
  * @Class: NetUrl
  * @Remark: 请求公共地址 统一放在此类
  */
-object NetUrl {
-    const val url1 = "https://api.com/"
-}
+object NetUrl

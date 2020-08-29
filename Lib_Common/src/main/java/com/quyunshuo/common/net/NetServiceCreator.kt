@@ -2,7 +2,6 @@ package com.quyunshuo.common.net
 
 import com.quyunshuo.base.BaseApplication
 import com.quyunshuo.base.BuildConfig
-import com.quyunshuo.common.constant.NetUrl
 import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -18,7 +17,7 @@ import java.util.concurrent.TimeUnit
  */
 object NetServiceCreator {
 
-    private const val BASE_URL = NetUrl.url1
+    private const val BASE_URL = ""
 
     private const val CONNECT_TIME_OUT = 15L
 

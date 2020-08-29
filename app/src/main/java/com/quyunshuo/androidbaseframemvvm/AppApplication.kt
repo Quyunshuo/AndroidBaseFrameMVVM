@@ -1,6 +1,5 @@
 package com.quyunshuo.androidbaseframemvvm
 
-import com.quyunshuo.androidbaseframemvvm.eventbus.index.MainEventIndex
 import com.quyunshuo.common.CommonApplication
 import org.greenrobot.eventbus.EventBus
 
@@ -16,7 +15,7 @@ class AppApplication : CommonApplication() {
         // 开启EventBusAPT,优化反射效率
         EventBus
             .builder()
-            .addIndex(MainEventIndex())
+//            .addIndex()
             .installDefaultEventBus()
         super.initialize()
     }
