@@ -39,7 +39,6 @@ class MainActivity :
             .request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
                     toast("权限全部授予")
-                    CrashReport.postCatchedException(Throwable("权限全部授予"));
                 } else {
                     toast("您拒绝了权限")
                 }
