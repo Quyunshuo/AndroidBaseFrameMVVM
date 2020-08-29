@@ -3,10 +3,8 @@
     package="com.quyunshuo.main">
 
     <application>
-        <activity android:name=".MainActivity2"></activity>
-        <activity
-            android:name=".MainActivity"
-            android:screenOrientation="sensorLandscape">
+        <activity android:name=".MainActivity2" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
