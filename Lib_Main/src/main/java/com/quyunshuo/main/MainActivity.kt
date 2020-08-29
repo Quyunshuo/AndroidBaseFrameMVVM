@@ -14,7 +14,6 @@ import com.quyunshuo.common.constant.RouteKey
 import com.quyunshuo.common.constant.RouteUrl
 import com.quyunshuo.common.ui.BaseActivity
 import com.quyunshuo.main.databinding.MainActivityMainBinding
-import com.tencent.bugly.crashreport.CrashReport
 import org.greenrobot.eventbus.Subscribe
 
 /**
