@@ -69,6 +69,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    debugImplementation GitHub.LeakCanary
     if (!BuildConfig.isAppMode) {
         implementation project(path: ':Lib_Main')
     } else {

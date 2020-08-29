@@ -42,6 +42,7 @@ object Version {
     const val EventBus = "3.2.0"                        // 事件总线
     const val Bugly = "3.2.33"                          // Bugly 异常上报
     const val PermissionX = "1.3.0"                     // 权限申请
+    const val LeakCanary = "2.4"                        // 检测内存泄漏
 }
 
 object AndroidX {
@@ -98,4 +99,5 @@ object GitHub {
     const val EventBusAPT = "org.greenrobot:eventbus-annotation-processor:${Version.EventBus}"
     const val Bugly = "com.tencent.bugly:crashreport:${Version.Bugly}"
     const val PermissionX = "com.permissionx.guolindev:permissionx:${Version.PermissionX}"
+    const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:${Version.LeakCanary}"
 }

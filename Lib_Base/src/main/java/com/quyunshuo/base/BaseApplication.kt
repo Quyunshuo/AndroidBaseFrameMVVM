@@ -38,7 +38,7 @@ open class BaseApplication : Application() {
 //        AutoSizeConfig.getInstance().isBaseOnWidth = false
 
         // Bugly 初始化 第三个参数为SDK调试模式开关
-        CrashReport.initCrashReport(this, "c5a9b1304f", BuildConfig.DEBUG);
+        CrashReport.initCrashReport(this, "c5a9b1304f", BuildConfig.DEBUG)
     }
 
     override fun attachBaseContext(base: Context?) {
