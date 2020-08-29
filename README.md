@@ -12,13 +12,13 @@
 
 <p align="center"> 谷歌 Android 团队 Jetpack 视图模型 </p>
 
-<p align="center"><img src="https://github.com/Quyunshuo/AndroidBaseFrameMVVM/blob/master/img/img2.jpg"/> </p>
+<p align="center"><img src="https://github.com/Quyunshuo/AndroidBaseFrameMVVM/blob/master/img/img2.png"/> </p>
 
 ## 框架技术栈
 
-* [组件化 架构]()
-* [MVVM 架构]()
-* [Repository 设计模式]()
+* [组件化 架构]
+* [MVVM 架构]
+* [Repository 设计模式]
 * [Kotlin](https://github.com/JetBrains/kotlin)
 * [Kotlin-Coroutines-Flow](https://github.com/JetBrains/kotlin)
 * [Lifecycle](https://developer.android.com/jetpack/androidx/releases/lifecycle)
