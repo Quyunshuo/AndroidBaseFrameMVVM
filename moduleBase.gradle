@@ -63,7 +63,8 @@ android {
 
 kapt {
     arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
+        arg("AROUTER_MODULE_NAME", project.name)
+        arg("eventBusIndex", "${BuildConfig.applicationId}.eventbus.index.${project.name.replace('Lib_', '')}EventIndex")
     }
 }
 
@@ -77,4 +78,5 @@ dependencies {
     androidTestImplementation AndroidX.TestEspresso
     kapt GitHub.GlideCompiler
     kapt GitHub.ARouteCompiler
+    kapt GitHub.EventBusAPT
 }

@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.flowOn
 /**
  * 以顶层函数存在的常用工具方法
  * startPolling() -> 开启一个轮询
+ * sendEvent() -> 发送普通EventBus事件
  */
 
 /**
@@ -33,3 +34,8 @@ suspend fun startPolling(intervals: Long, block: () -> Unit) {
         .flowOn(Dispatchers.Main)
         .collect { block.invoke() }
 }
+
+/**
+ * 发送普通EventBus事件
+ */
+fun sendEvent(event: Any) = EventBusUtils.postEvent(event)

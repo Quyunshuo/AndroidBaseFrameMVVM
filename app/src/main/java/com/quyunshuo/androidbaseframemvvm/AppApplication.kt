@@ -1,7 +1,9 @@
 package com.quyunshuo.androidbaseframemvvm
 
 import androidx.multidex.MultiDex
+import com.quyunshuo.androidbaseframemvvm.eventbus.index.MainEventIndex
 import com.quyunshuo.common.CommonApplication
+import org.greenrobot.eventbus.EventBus
 
 /**
  * @Author: QuYunShuo
@@ -13,6 +15,11 @@ class AppApplication : CommonApplication() {
 
     override fun initialize() {
         MultiDex.install(this)
+        // 开启EventBusAPT,优化反射效率
+        EventBus
+            .builder()
+            .addIndex(MainEventIndex())
+            .installDefaultEventBus()
         super.initialize()
     }
 }

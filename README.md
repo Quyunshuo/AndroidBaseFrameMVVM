@@ -1,6 +1,7 @@
 # Android项目框架(组件化 + Kotlin + MVVM + Jetpack )
 
 note: 1. 测试打包脚本
+      2. 对比开源项目flow的封装
 
 资源文件相关{
     资源相关文件属于项目相关的，因此需要放在Common组件内，不要放在Base组件里
