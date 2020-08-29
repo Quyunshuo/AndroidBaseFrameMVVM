@@ -2,6 +2,9 @@
 
 note: 1. 测试打包脚本
       2. 对比开源项目flow的封装
+      3. bugly 测试上报
+      4. 内存泄漏工具
+      5. 网络请求库
 
 资源文件相关{
     资源相关文件属于项目相关的，因此需要放在Common组件内，不要放在Base组件里
@@ -18,6 +21,7 @@ note: 1. 测试打包脚本
     屏幕适配 AndroidAutoSize : https://github.com/JessYanCoding/AndroidAutoSize
     本地存储 MMKV : https://github.com/Tencent/MMKV
     路由    ARouter : https://github.com/alibaba/ARouter
+    权限申请 PermissionX : https://github.com/guolindev/PermissionX
 }
 
 网络{

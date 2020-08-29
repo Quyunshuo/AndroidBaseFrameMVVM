@@ -48,6 +48,7 @@ dependencies {
     api AndroidX.ConstraintLayout
     api AndroidX.ActivityKtx
     api AndroidX.FragmentKtx
+    api AndroidX.MultiDex
 
     api Kotlin.Kotlin
     api Kotlin.CoroutinesCore
@@ -69,6 +70,8 @@ dependencies {
     api GitHub.RecyclerViewAdapter
     api GitHub.StatusBar
     api GitHub.EventBus
+    api GitHub.Bugly
+    api GitHub.PermissionX
 
     kapt GitHub.GlideCompiler
     kapt GitHub.ARouteCompiler

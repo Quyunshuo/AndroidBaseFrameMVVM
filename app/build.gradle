@@ -15,6 +15,7 @@ android {
         versionCode BuildConfig.versionCode
         versionName BuildConfig.versionName
         testInstrumentationRunner AndroidX.AndroidJUnitRunner
+        multiDexKeepProguard file("multidexKeep.pro")
     }
 
 //    signingConfigs {
@@ -68,7 +69,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation AndroidX.MultiDex
     if (!BuildConfig.isAppMode) {
         implementation project(path: ':Lib_Main')
     } else {
