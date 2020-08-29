@@ -18,8 +18,6 @@ open class BaseRepository {
      * @param requestBlock 请求的整体逻辑
      * @return Flow<T>
      */
-    protected suspend fun <T> flowRequest(requestBlock: suspend FlowCollector<T>.() -> Unit) =
-        flow {
-            requestBlock()
-        }.flowOn(Dispatchers.IO)     // 通过 flowOn 切换到 io 线程
+    protected fun <T> flowRequest(requestBlock: suspend FlowCollector<T>.() -> Unit) =
+        flow(block = requestBlock).flowOn(Dispatchers.IO)     // 通过 flowOn 切换到 io 线程
 }

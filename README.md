@@ -12,3 +12,14 @@ note: 1. 测试打包脚本
     ViewModel 中 可以使用 viewModelScope,它与ViewModel绑定了生命周期 无需手动取消
     lifecycleScope和viewModelScope 默认的调度器是Main
 }
+
+第三方库{
+    屏幕适配 AndroidAutoSize : https://github.com/JessYanCoding/AndroidAutoSize
+    本地存储 MMKV : https://github.com/Tencent/MMKV
+    路由    ARouter : https://github.com/alibaba/ARouter
+}
+
+网络{
+    关于请求接口的代理接口,建议按接口的使用范围进行划分，比如公用接口单独写在一个接口里，Home页用的接口单独写在一个接口里...
+    然后在NetRequest类中统一委托延时初始化实例，调用者直接通过NetRequest进行选择性调用相应的代理接口
+}

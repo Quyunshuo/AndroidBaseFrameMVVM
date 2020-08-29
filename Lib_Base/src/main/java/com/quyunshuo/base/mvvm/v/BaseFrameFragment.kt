@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.alibaba.android.arouter.launcher.ARouter
 
 /**
  * @Author: QuYunShuo
@@ -38,6 +39,8 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel>(private val v
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // ARouter 依赖注入
+        ARouter.getInstance().inject(this)
         initView()
     }
 }
