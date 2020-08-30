@@ -40,10 +40,10 @@
 * [LeakCanary](https://github.com/square/leakcanary):Android的内存泄漏检测库
 
 ## 使用方式
-下载本项目删除无用的文件
-1.修改项目包名及各组件包结构,修改 AppName
-2.填写自己的 Bugly key 在 BaseApplication initialize() 方法中
-这样就可以使用了,当然可以删除不用的第三方,或者添加相应要使用的第三方,具体规范看下面的框架解读
+* 1.下载本项目删除无用的文件
+* 2.修改项目包名及各组件包结构,修改 AppName
+* 3.填写自己的 Bugly key 在 BaseApplication initialize() 方法中
+* 这样就可以使用了,当然可以删除不用的第三方,或者添加相应要使用的第三方,具体规范看下面的框架解读
 
 ## 框架解读
 
