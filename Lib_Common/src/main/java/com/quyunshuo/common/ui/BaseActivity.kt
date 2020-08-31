@@ -1,7 +1,9 @@
 package com.quyunshuo.common.ui
 
+import androidx.annotation.ColorInt
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
+import com.jaeger.library.StatusBarUtil
 import com.quyunshuo.base.mvvm.v.BaseFrameActivity
 
 /**
@@ -11,4 +13,12 @@ import com.quyunshuo.base.mvvm.v.BaseFrameActivity
  * @Remark: 项目相关的Activity基类
  */
 abstract class BaseActivity<VB : ViewBinding, VM : ViewModel>(vmClass: Class<VM>) :
-    BaseFrameActivity<VB, VM>(vmClass)
+    BaseFrameActivity<VB, VM>(vmClass) {
+
+    /**
+     * 设置状态栏颜色
+     */
+    protected fun setStatusBarColor(@ColorInt color: Int) {
+        StatusBarUtil.setColor(this, color, 0)
+    }
+}

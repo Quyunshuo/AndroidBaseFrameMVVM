@@ -16,6 +16,7 @@ object Version {
 
     // Android---------------------------------------------------------------
     const val Junit = "4.13"
+    const val Material = "1.2.0"
 
     // Kotlin----------------------------------------------------------------
     const val Kotlin = "1.4.0"
@@ -61,6 +62,7 @@ object AndroidX {
 
 object Android {
     const val Junit = "junit:junit:${Version.Junit}"
+    const val Material = "com.google.android.material:material:${Version.Material}"
 }
 
 object JetPack {

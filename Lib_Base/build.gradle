@@ -50,6 +50,8 @@ dependencies {
     api AndroidX.FragmentKtx
     api AndroidX.MultiDex
 
+    api Android.Material
+
     api Kotlin.Kotlin
     api Kotlin.CoroutinesCore
     api Kotlin.CoroutinesAndroid
