@@ -6,4 +6,10 @@ package com.quyunshuo.common.constant
  * @Class: RoutePath
  * @Remark: 路由地址
  */
-object RouteUrl
+object RouteUrl {
+    // 启动页
+    const val SplashActivity = "/Lib_Main/SplashActivity"
+
+    // 首页
+    const val MainActivity = "/Lib_Main/MainActivity"
+}

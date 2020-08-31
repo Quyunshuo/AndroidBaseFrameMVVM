@@ -70,8 +70,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     if (!BuildConfig.isAppMode) {
-        // 有业务组件时 把这个去掉 这里只是为了使用base里的依赖库
-        implementation project(path: ':Lib_Common')
+        implementation project(path: ':Lib_Main')
     } else {
         implementation project(path: ':Lib_Common')
     }
