@@ -17,8 +17,6 @@ import java.util.concurrent.TimeUnit
  */
 object NetServiceCreator {
 
-    private const val BASE_URL = ""
-
     private const val CONNECT_TIME_OUT = 15L
 
     private const val READ_TIME_OUT = 20L
@@ -43,8 +41,8 @@ object NetServiceCreator {
 
     private val retrofit by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())     // Gson转换器
+            .baseUrl("")
+            .addConverterFactory(GsonConverterFactory.create())         // Gson转换器
             .client(okHttpClient)
             .build()
     }
