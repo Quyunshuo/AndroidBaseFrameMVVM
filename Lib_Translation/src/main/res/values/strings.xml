@@ -1,0 +1,6 @@
+<resources>
+    <string name="translation_app_name">Lib_Translation</string>
+    <string name="translation_translation">翻译</string>
+    <string name="translation_edit_hint">输入中文翻译</string>
+    <string name="translation_hello">Hello!</string>
+</resources>

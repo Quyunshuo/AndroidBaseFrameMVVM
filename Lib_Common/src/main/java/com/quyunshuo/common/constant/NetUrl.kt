@@ -6,4 +6,8 @@ package com.quyunshuo.common.constant
  * @Class: NetUrl
  * @Remark: 请求公共地址 统一放在此类
  */
-object NetUrl
+object NetUrl {
+
+    // 百度翻译
+    const val translationBaseUrl = "https://api.fanyi.baidu.com/"
+}

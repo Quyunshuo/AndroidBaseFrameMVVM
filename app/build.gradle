@@ -71,6 +71,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     if (!BuildConfig.isAppMode) {
         implementation project(path: ':Lib_Main')
+        implementation project(path: ':Lib_Translation')
     } else {
         implementation project(path: ':Lib_Common')
     }

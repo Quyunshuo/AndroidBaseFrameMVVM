@@ -45,6 +45,7 @@ object Version {
     const val PermissionX = "1.3.0"                     // 权限申请
     const val LeakCanary = "2.4"                        // 检测内存泄漏
     const val Chuck = "1.1.0"                           // OkHttp 请求信息拦截器(UI)
+    const val SpinKit = "1.4.0"                         // 加载图
 }
 
 object AndroidX {
@@ -105,4 +106,5 @@ object GitHub {
     const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:${Version.LeakCanary}"
     const val Chuck = "com.readystatesoftware.chuck:library:${Version.Chuck}"
     const val ChuckNo = "com.readystatesoftware.chuck:library-no-op:${Version.Chuck}"
+    const val SpinKit = "com.github.ybq:Android-SpinKit:${Version.SpinKit}"
 }

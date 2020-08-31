@@ -1,6 +1,7 @@
 package com.quyunshuo.main.ui.main
 
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.quyunshuo.common.constant.RouteUrl
 import com.quyunshuo.common.ui.BaseActivity
@@ -35,6 +36,12 @@ class MainActivity :
         }
         mBinding.mSelectFunctionLayout.mTranslationTv.setOnClickListener {
             // 跳转到翻译模块
+            ARouter.getInstance()
+                .build(RouteUrl.TranslationActivity)
+                .navigation()
+            sheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
     }
+
+    override fun initViewObserve() {}
 }

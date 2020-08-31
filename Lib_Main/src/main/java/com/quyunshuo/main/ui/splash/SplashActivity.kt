@@ -41,4 +41,6 @@ class SplashActivity :
             finish()
         }
     }
+
+    override fun initViewObserve() {}
 }

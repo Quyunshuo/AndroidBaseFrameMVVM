@@ -74,6 +74,7 @@ dependencies {
     api GitHub.EventBus
     api GitHub.Bugly
     api GitHub.PermissionX
+    api GitHub.SpinKit
 
     kapt GitHub.GlideCompiler
     kapt GitHub.ARouteCompiler
