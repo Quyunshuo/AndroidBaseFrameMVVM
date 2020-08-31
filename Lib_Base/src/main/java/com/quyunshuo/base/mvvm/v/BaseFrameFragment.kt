@@ -28,8 +28,8 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel>(private val v
     protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) { initViewBinding() }
 
     protected abstract fun initViewBinding(): VB
-
     protected abstract fun initView()
+    protected abstract fun initViewObserve()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,6 +46,7 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel>(private val v
         // 注册EventBus
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.register(this)
         initView()
+        initViewObserve()
     }
 
     override fun onDestroy() {
