@@ -18,11 +18,7 @@ import me.jessyan.autosize.internal.CancelAdapt
  * @Remark:
  */
 @Route(path = RouteUrl.SplashActivity)
-class SplashActivity :
-    BaseActivity<MainActivitySplashBinding, SplashViewModel>(SplashViewModel::class.java),
-    CancelAdapt {
-
-    override fun initViewBinding() = MainActivitySplashBinding.inflate(layoutInflater)
+class SplashActivity : BaseActivity<MainActivitySplashBinding, SplashViewModel>(), CancelAdapt {
 
     override fun initView() {
         jumpMain()

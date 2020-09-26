@@ -21,9 +21,7 @@ import kotlinx.android.synthetic.main.translation_activity_translation.*
  */
 @Route(path = RouteUrl.TranslationActivity)
 class TranslationActivity :
-    BaseActivity<TranslationActivityTranslationBinding, TranslationViewModel>(TranslationViewModel::class.java) {
-
-    override fun initViewBinding() = TranslationActivityTranslationBinding.inflate(layoutInflater)
+    BaseActivity<TranslationActivityTranslationBinding, TranslationViewModel>() {
 
     override fun initView() {
         // 设置EditText

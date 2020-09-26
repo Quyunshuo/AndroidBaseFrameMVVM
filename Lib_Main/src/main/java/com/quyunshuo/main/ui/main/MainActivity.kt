@@ -15,10 +15,7 @@ import com.quyunshuo.main.databinding.MainActivityMainBinding
  * @Remark: 首页
  */
 @Route(path = RouteUrl.MainActivity)
-class MainActivity :
-    BaseActivity<MainActivityMainBinding, MainViewModel>(MainViewModel::class.java) {
-
-    override fun initViewBinding() = MainActivityMainBinding.inflate(layoutInflater)
+class MainActivity : BaseActivity<MainActivityMainBinding, MainViewModel>() {
 
     override fun initView() {
         setStatusBarColor(resources.getColor(R.color.common_theme_color))
