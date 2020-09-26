@@ -22,7 +22,7 @@
         android:theme="@style/base_AppTheme"
         tools:ignore="UnusedAttribute">
         <activity
-            android:name="com.quyunshuo.base.mvvm.v.MyActivity"
+            android:name=".MyActivity"
             android:screenOrientation="portrait"
             android:theme="@style/base_AppTheme">
             <intent-filter>

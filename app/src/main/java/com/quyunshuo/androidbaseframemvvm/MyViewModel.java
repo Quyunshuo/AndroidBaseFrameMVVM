@@ -1,4 +1,4 @@
-package com.quyunshuo.base.mvvm.v;
+package com.quyunshuo.androidbaseframemvvm;
 
 import android.util.Log;
 
