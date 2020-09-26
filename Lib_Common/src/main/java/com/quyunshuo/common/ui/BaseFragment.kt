@@ -10,5 +10,4 @@ import com.quyunshuo.base.mvvm.v.BaseFrameFragment
  * @Class: BaseFragment
  * @Remark: 项目相关的Fragment基类
  */
-abstract class BaseFragment<VB : ViewBinding, VM : ViewModel>(vmClass: Class<VM>) :
-    BaseFrameFragment<VB, VM>(vmClass)
+abstract class BaseFragment<VB : ViewBinding, VM : ViewModel> : BaseFrameFragment<VB, VM>()

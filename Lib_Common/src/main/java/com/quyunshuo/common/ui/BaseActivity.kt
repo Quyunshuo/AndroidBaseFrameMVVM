@@ -10,5 +10,4 @@ import com.quyunshuo.base.mvvm.v.BaseFrameActivity
  * @Class: BaseActivity
  * @Remark: 项目相关的Activity基类
  */
-abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> :
-    BaseFrameActivity<VB, VM>()
+abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : BaseFrameActivity<VB, VM>()

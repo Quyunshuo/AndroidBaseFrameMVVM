@@ -11,6 +11,7 @@ import androidx.viewbinding.ViewBinding
 import com.alibaba.android.arouter.launcher.ARouter
 import com.quyunshuo.base.utils.EventBusRegister
 import com.quyunshuo.base.utils.EventBusUtils
+import java.lang.reflect.ParameterizedType
 
 /**
  * @Author: QuYunShuo
@@ -18,16 +19,17 @@ import com.quyunshuo.base.utils.EventBusUtils
  * @Class: BaseFrameFragment
  * @Remark: Fragment基类 与项目无关
  */
-abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel>(private val vmClass: Class<VM>) :
+abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel> :
     Fragment() {
 
+    protected lateinit var mBinding: VB
+
     protected val mViewModel: VM by lazy(mode = LazyThreadSafetyMode.NONE) {
+        val vmClass: Class<VM> =
+            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1] as Class<VM>
         ViewModelProvider(this).get(vmClass)
     }
 
-    protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) { initViewBinding() }
-
-    protected abstract fun initViewBinding(): VB
     protected abstract fun initView()
     protected abstract fun initViewObserve()
 
@@ -36,6 +38,10 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel>(private val v
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val vbClass: Class<VB> =
+            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<VB>
+        val inflate = vbClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
+        mBinding = inflate.invoke(null, layoutInflater, container, false) as VB
         return mBinding.root
     }
 

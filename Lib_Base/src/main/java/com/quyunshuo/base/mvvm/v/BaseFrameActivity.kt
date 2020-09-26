@@ -20,29 +20,21 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseFrameActivity<VB : ViewBinding, VM : ViewModel> :
     AppCompatActivity() {
 
-    protected val mViewModel: VM by lazy(mode = LazyThreadSafetyMode.NONE) {
-        //init ViewModel | getActualTypeArguments [0]=是第一个泛型参数 | [1] = 是类的第二个泛型参数
-        val tClass: Class<VM> =
-            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1] as Class<VM>
-        ViewModelProvider(this).get(tClass)
+    protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
+        val vbClass: Class<VB> =
+            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<VB>
+        val inflate = vbClass.getMethod("inflate", LayoutInflater::class.java)
+        inflate.invoke(null, layoutInflater) as VB
     }
 
-    protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
-        getViewBindingReflex()
+    protected val mViewModel: VM by lazy(mode = LazyThreadSafetyMode.NONE) {
+        val vmClass: Class<VM> =
+            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1] as Class<VM>
+        ViewModelProvider(this).get(vmClass)
     }
 
     protected abstract fun initView()
     protected abstract fun initViewObserve()
-
-    /**
-     * 反射初始化ViewBinding
-     */
-    private fun getViewBindingReflex(): VB {
-        val tClass: Class<VB> =
-            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<VB>
-        val infater = tClass.getMethod("inflate",  LayoutInflater::class.java)
-        return infater.invoke(null,layoutInflater) as VB
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

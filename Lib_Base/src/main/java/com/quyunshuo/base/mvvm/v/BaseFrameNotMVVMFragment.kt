@@ -9,6 +9,7 @@ import androidx.viewbinding.ViewBinding
 import com.alibaba.android.arouter.launcher.ARouter
 import com.quyunshuo.base.utils.EventBusRegister
 import com.quyunshuo.base.utils.EventBusUtils
+import java.lang.reflect.ParameterizedType
 
 /**
  * @Author: QuYunShuo
@@ -18,9 +19,8 @@ import com.quyunshuo.base.utils.EventBusUtils
  */
 abstract class BaseFrameNotMVVMFragment<VB : ViewBinding> : Fragment() {
 
-    protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) { initViewBinding() }
+    protected lateinit var mBinding: VB
 
-    protected abstract fun initViewBinding(): VB
     protected abstract fun initView()
 
     override fun onCreateView(
@@ -28,6 +28,10 @@ abstract class BaseFrameNotMVVMFragment<VB : ViewBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val vbClass: Class<VB> =
+            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<VB>
+        val inflate = vbClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
+        mBinding = inflate.invoke(null, layoutInflater, container, false) as VB
         return mBinding.root
     }
 
