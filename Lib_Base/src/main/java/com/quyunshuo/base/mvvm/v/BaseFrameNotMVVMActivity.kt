@@ -23,6 +23,7 @@ abstract class BaseFrameNotMVVMActivity<VB : ViewBinding> : AppCompatActivity() 
         val inflate = vbClass.getMethod("inflate", LayoutInflater::class.java)
         inflate.invoke(null, layoutInflater) as VB
     }
+
     protected abstract fun initView()
 
     override fun onCreate(savedInstanceState: Bundle?) {

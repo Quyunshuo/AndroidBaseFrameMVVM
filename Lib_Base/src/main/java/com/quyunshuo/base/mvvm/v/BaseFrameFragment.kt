@@ -22,8 +22,12 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel> :
     Fragment() {
 
-    protected lateinit var mBinding: VB
-
+    protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
+        val vbClass: Class<VB> =
+            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<VB>
+        val inflate = vbClass.getMethod("inflate", LayoutInflater::class.java)
+        inflate.invoke(null, layoutInflater) as VB
+    }
     protected val mViewModel: VM by lazy(mode = LazyThreadSafetyMode.NONE) {
         val vmClass: Class<VM> =
             (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1] as Class<VM>
@@ -38,10 +42,6 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel> :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val vbClass: Class<VB> =
-            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<VB>
-        val inflate = vbClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
-        mBinding = inflate.invoke(null, layoutInflater, container, false) as VB
         return mBinding.root
     }
 
