@@ -22,7 +22,7 @@ abstract class BaseFrameNotMVVMFragment<VB : ViewBinding> : Fragment() {
     protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
         val vbClass: Class<VB> =
             (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<VB>
-        val inflate = vbClass.getMethod("inflate", LayoutInflater::class.java)
+        val inflate = vbClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
         inflate.invoke(null, layoutInflater) as VB
     }
 
