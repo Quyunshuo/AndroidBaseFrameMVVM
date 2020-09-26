@@ -4,12 +4,13 @@ import android.content.Context
 import android.view.Gravity
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
 
 /**
  * @Author: QuYunShuo
- * @Time: 2020/8/17
- * @Class: ContextKtx
- * @Remark: Context相关的扩展方法
+ * @Time: 2020/9/17
+ * @Class: ToastKtx
+ * @Remark: Toast相关的扩展方法
  */
 
 /**
@@ -49,33 +50,33 @@ fun Context.centerToast(@StringRes resId: Int, duration: Int = Toast.LENGTH_SHOR
 }
 
 /**
- * dp 转 px
+ * Toast
+ * @param text CharSequence 类型文本
  */
-fun Context.dp2px(dpValue: Float): Int {
-    val scale = resources.displayMetrics.density
-    return (dpValue * scale + 0.5f).toInt()
+fun Fragment.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
+    context?.toast(text, duration)
 }
 
 /**
- * px 转 dp
+ * Toast
+ * @param resId String 类型资源id
  */
-fun Context.px2dp(pxValue: Float): Int {
-    val scale = resources.displayMetrics.density
-    return (pxValue / scale + 0.5f).toInt()
+fun Fragment.toast(@StringRes resId: Int, duration: Int = Toast.LENGTH_SHORT) {
+    context?.toast(resId, duration)
 }
 
 /**
- * sp 转 px
+ * 居中Toast
+ * @param text CharSequence 类型文本
  */
-fun Context.sp2px(spValue: Float): Int {
-    val scale = resources.displayMetrics.scaledDensity
-    return (spValue * scale + 0.5f).toInt()
+fun Fragment.centerToast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
+    context?.centerToast(text, duration)
 }
 
 /**
- * px 转 sp
+ * 居中Toast
+ * @param resId String 类型资源id
  */
-fun Context.px2sp(pxValue: Float): Int {
-    val scale = resources.displayMetrics.scaledDensity
-    return (pxValue / scale + 0.5f).toInt()
+fun Fragment.centerToast(@StringRes resId: Int, duration: Int = Toast.LENGTH_SHORT) {
+    context?.centerToast(resId, duration)
 }

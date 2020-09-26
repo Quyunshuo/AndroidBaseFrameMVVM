@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.alibaba.android.arouter.launcher.ARouter
 import com.quyunshuo.base.utils.EventBusRegister
@@ -15,23 +13,15 @@ import java.lang.reflect.ParameterizedType
 
 /**
  * @Author: QuYunShuo
- * @Time: 2020/8/27
- * @Class: BaseFrameFragment
- * @Remark: Fragment基类 与项目无关
+ * @Time: 2020/9/10
+ * @Class: BaseFrameNotMVVMFragment
+ * @Remark: 不使用 MVVM 的 Fragment 基类
  */
-abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel> :
-    Fragment() {
+abstract class BaseFrameNotMVVMFragment<VB : ViewBinding> : Fragment() {
 
     protected lateinit var mBinding: VB
 
-    protected val mViewModel: VM by lazy(mode = LazyThreadSafetyMode.NONE) {
-        val vmClass: Class<VM> =
-            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1] as Class<VM>
-        ViewModelProvider(this).get(vmClass)
-    }
-
     protected abstract fun initView()
-    protected abstract fun initViewObserve()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,7 +42,6 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel> :
         // 注册EventBus
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.register(this)
         initView()
-        initViewObserve()
     }
 
     override fun onDestroy() {

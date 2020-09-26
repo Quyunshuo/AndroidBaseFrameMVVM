@@ -12,8 +12,7 @@ import com.quyunshuo.base.mvvm.v.BaseFrameActivity
  * @Class: BaseActivity
  * @Remark: 项目相关的Activity基类
  */
-abstract class BaseActivity<VB : ViewBinding, VM : ViewModel>(vmClass: Class<VM>) :
-    BaseFrameActivity<VB, VM>(vmClass) {
+abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : BaseFrameActivity<VB, VM>(){
 
     /**
      * 设置状态栏颜色
