@@ -15,7 +15,7 @@ import java.lang.reflect.ParameterizedType
  * @Class: BaseFrameNotMVVMActivity
  * @Remark: 不使用 MVVM 的 Activity 基类
  */
-abstract class BaseFrameNotMVVMActivity<VB : ViewBinding> : AppCompatActivity() {
+abstract class BaseFrameNotMVVMActivity<VB : ViewBinding> : AppCompatActivity(), FrameNotMVVMView {
 
     protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
         val vbClass: Class<VB> =
@@ -23,8 +23,6 @@ abstract class BaseFrameNotMVVMActivity<VB : ViewBinding> : AppCompatActivity() 
         val inflate = vbClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
         inflate.invoke(null, layoutInflater) as VB
     }
-
-    protected abstract fun initView()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

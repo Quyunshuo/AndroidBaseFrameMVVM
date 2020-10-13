@@ -18,7 +18,7 @@ import java.lang.reflect.ParameterizedType
  * @Remark: Activity基类 与项目无关
  */
 abstract class BaseFrameActivity<VB : ViewBinding, VM : ViewModel> :
-    AppCompatActivity() {
+    AppCompatActivity(), FrameView {
 
     protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
         val vbClass: Class<VB> =
@@ -32,9 +32,6 @@ abstract class BaseFrameActivity<VB : ViewBinding, VM : ViewModel> :
             (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1] as Class<VM>
         ViewModelProvider(this).get(vmClass)
     }
-
-    protected abstract fun initView()
-    protected abstract fun initViewObserve()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

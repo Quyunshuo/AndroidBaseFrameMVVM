@@ -19,8 +19,7 @@ import java.lang.reflect.ParameterizedType
  * @Class: BaseFrameFragment
  * @Remark: Fragment基类 与项目无关
  */
-abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel> :
-    Fragment() {
+abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel> : Fragment(), FrameView {
 
     protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
         val vbClass: Class<VB> =
@@ -33,9 +32,6 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel> :
             (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1] as Class<VM>
         ViewModelProvider(this).get(vmClass)
     }
-
-    protected abstract fun initView()
-    protected abstract fun initViewObserve()
 
     override fun onCreateView(
         inflater: LayoutInflater,
