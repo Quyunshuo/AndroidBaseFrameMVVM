@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# 避免 ViewBinding 类被混淆导致反射初始化失败
+-keep public interface androidx.viewbinding.ViewBinding
+-keepclassmembers class * implements androidx.viewbinding.ViewBinding{
+    *;
+}
