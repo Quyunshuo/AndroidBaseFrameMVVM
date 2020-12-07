@@ -20,7 +20,7 @@ import me.jessyan.autosize.internal.CancelAdapt
 @Route(path = RouteUrl.SplashActivity)
 class SplashActivity : BaseActivity<MainActivitySplashBinding, SplashViewModel>(), CancelAdapt {
 
-    override fun initView() {
+    override fun MainActivitySplashBinding.initView() {
         jumpMain()
     }
 
@@ -38,5 +38,7 @@ class SplashActivity : BaseActivity<MainActivitySplashBinding, SplashViewModel>(
         }
     }
 
-    override fun initViewObserve() {}
+    override fun initLiveDataObserve() {}
+
+    override fun initRequestData() {}
 }

@@ -17,7 +17,7 @@ import com.quyunshuo.main.databinding.MainActivityMainBinding
 @Route(path = RouteUrl.MainActivity)
 class MainActivity : BaseActivity<MainActivityMainBinding, MainViewModel>() {
 
-    override fun initView() {
+    override fun MainActivityMainBinding.initView() {
         setStatusBarColor(resources.getColor(R.color.common_theme_color))
         val sheetBehavior =
             BottomSheetBehavior.from(mBinding.mSelectFunctionLayout.mBottomSheetLayout).apply {
@@ -40,5 +40,7 @@ class MainActivity : BaseActivity<MainActivityMainBinding, MainViewModel>() {
         }
     }
 
-    override fun initViewObserve() {}
+    override fun initLiveDataObserve() {}
+
+    override fun initRequestData() {}
 }

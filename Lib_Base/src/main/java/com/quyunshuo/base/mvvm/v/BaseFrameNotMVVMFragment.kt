@@ -17,7 +17,7 @@ import java.lang.reflect.ParameterizedType
  * @Class: BaseFrameNotMVVMFragment
  * @Remark: 不使用 MVVM 的 Fragment 基类
  */
-abstract class BaseFrameNotMVVMFragment<VB : ViewBinding> : Fragment() {
+abstract class BaseFrameNotMVVMFragment<VB : ViewBinding> : Fragment(), FrameNotMVVMView<VB> {
 
     protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
         val vbClass: Class<VB> =
@@ -25,8 +25,6 @@ abstract class BaseFrameNotMVVMFragment<VB : ViewBinding> : Fragment() {
         val inflate = vbClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
         inflate.invoke(null, layoutInflater) as VB
     }
-
-    protected abstract fun initView()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +40,7 @@ abstract class BaseFrameNotMVVMFragment<VB : ViewBinding> : Fragment() {
         ARouter.getInstance().inject(this)
         // 注册EventBus
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.register(this)
-        initView()
+        mBinding.initView()
     }
 
     override fun onDestroy() {

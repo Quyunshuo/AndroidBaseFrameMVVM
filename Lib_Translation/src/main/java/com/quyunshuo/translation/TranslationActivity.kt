@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.translation_activity_translation.*
 class TranslationActivity :
     BaseActivity<TranslationActivityTranslationBinding, TranslationViewModel>() {
 
-    override fun initView() {
+    override fun TranslationActivityTranslationBinding.initView() {
         // 设置EditText
         mBinding.mEdit.run {
             inputType = InputType.TYPE_TEXT_FLAG_MULTI_LINE
@@ -48,7 +48,7 @@ class TranslationActivity :
         }
     }
 
-    override fun initViewObserve() {
+    override fun initLiveDataObserve() {
         // 观察 ViewModel 的 translationLiveData,当其发生改变时,做出响应
         mViewModel.translationLiveData.observe(this, { mBinding.mShowTv.text = it })
         // Loading 图
@@ -60,4 +60,6 @@ class TranslationActivity :
             }
         })
     }
+
+    override fun initRequestData() {}
 }
