@@ -18,7 +18,7 @@ import java.lang.reflect.ParameterizedType
  * @Remark: Activity基类 与项目无关
  */
 abstract class BaseFrameActivity<VB : ViewBinding, VM : ViewModel> :
-    AppCompatActivity(), FrameView {
+    AppCompatActivity(), FrameView<VB> {
 
     protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
         val vbClass: Class<VB> =
@@ -40,8 +40,9 @@ abstract class BaseFrameActivity<VB : ViewBinding, VM : ViewModel> :
         ARouter.getInstance().inject(this)
         // 注册EventBus
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.register(this)
-        initView()
-        initViewObserve()
+        mBinding.initView()
+        initLiveDataObserve()
+        initRequestData()
     }
 
     override fun onDestroy() {

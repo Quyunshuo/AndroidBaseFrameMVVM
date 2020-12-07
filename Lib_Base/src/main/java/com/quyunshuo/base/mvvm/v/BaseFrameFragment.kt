@@ -19,7 +19,7 @@ import java.lang.reflect.ParameterizedType
  * @Class: BaseFrameFragment
  * @Remark: Fragment基类 与项目无关
  */
-abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel> : Fragment(), FrameView {
+abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel> : Fragment(), FrameView<VB> {
 
     protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
         val vbClass: Class<VB> =
@@ -47,8 +47,9 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : ViewModel> : Fragment(),
         ARouter.getInstance().inject(this)
         // 注册EventBus
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.register(this)
-        initView()
-        initViewObserve()
+        mBinding.initView()
+        initLiveDataObserve()
+        initRequestData()
     }
 
     override fun onDestroy() {
