@@ -65,7 +65,7 @@ android {
 * 各个功能业务组件可以单独运行,通过 buildSrc/BuildConfig.kt 中的 isAppMode 参数控制,项目业务复杂起来后,就需要为每个组件单独编写供其正常单独运行的逻辑代码
 
 **MVVM相关**
-* MVVM 采用 Jetpack 组件 + Repository 设计模式 实现,所使用的 Jetpack 并不是很多,像 DataBinding、Hilt(不支持多模块)、Room 等并没有使用,如果需要可以添加。采用架构模式目的就是为了解偶代码,对代码进行分层,各模块各司其职,所以既然使用了架构模式那就要遵守好规范
+* MVVM 采用 Jetpack 组件 + Repository 设计模式 实现,所使用的 Jetpack 并不是很多,像 DataBinding、Hilt、Room 等并没有使用,如果需要可以添加。采用架构模式目的就是为了解偶代码,对代码进行分层,各模块各司其职,所以既然使用了架构模式那就要遵守好规范
 * Repository 仓库层负责数据的提供,ViewModel 无需关心数据的来源,Repository 内避免使用 LiveData,框架里使用了 Kotlin 协程的 Flow 进行处理请求或访问数据库,最后将数据发射到 ViewModel 调用者,Flow上游负责提供数据,下游也就是ViewModel获取到数据使用LiveData进行存储,View层订阅LiveData,实现数据驱动视图
 * 三者的依赖都是单向依赖,View -> ViewModel -> Repository  
 
