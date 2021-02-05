@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.viewbinding.ViewBinding
-import java.lang.RuntimeException
 import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.ParameterizedType
 import java.util.*
@@ -31,7 +30,12 @@ object BindingReflex {
             val actualTypeArguments =
                 (Objects.requireNonNull(aClass.genericSuperclass) as ParameterizedType).actualTypeArguments
             for (i in actualTypeArguments.indices) {
-                val tClass = actualTypeArguments[i] as Class<V>
+                val tClass: Class<Any>
+                try {
+                    tClass = actualTypeArguments[i] as Class<Any>
+                } catch (e: Exception) {
+                    continue
+                }
                 if (ViewBinding::class.java.isAssignableFrom(tClass)) {
                     val inflate = tClass.getMethod("inflate", LayoutInflater::class.java)
                     return inflate.invoke(null, from) as V
@@ -61,7 +65,12 @@ object BindingReflex {
             val actualTypeArguments =
                 (Objects.requireNonNull(aClass.genericSuperclass) as ParameterizedType).actualTypeArguments
             for (i in actualTypeArguments.indices) {
-                val tClass = actualTypeArguments[i] as Class<V>
+                val tClass: Class<Any>
+                try {
+                    tClass = actualTypeArguments[i] as Class<Any>
+                } catch (e: Exception) {
+                    continue
+                }
                 if (ViewBinding::class.java.isAssignableFrom(tClass)) {
                     val inflate = tClass.getDeclaredMethod(
                         "inflate",
@@ -96,9 +105,14 @@ object BindingReflex {
             val actualTypeArguments =
                 (Objects.requireNonNull(aClass.genericSuperclass) as ParameterizedType).actualTypeArguments
             for (i in actualTypeArguments.indices) {
-                val tClass = actualTypeArguments[i] as Class<VM>
+                val tClass: Class<Any>
+                try {
+                    tClass = actualTypeArguments[i] as Class<Any>
+                } catch (e: Exception) {
+                    continue
+                }
                 if (ViewModel::class.java.isAssignableFrom(tClass)) {
-                    return ViewModelProvider(owner)[tClass]
+                    return ViewModelProvider(owner)[tClass as Class<VM>]
                 }
             }
             return reflexViewModel<VM>(aClass.superclass, owner)
@@ -123,9 +137,14 @@ object BindingReflex {
             val actualTypeArguments =
                 (Objects.requireNonNull(aClass.genericSuperclass) as ParameterizedType).actualTypeArguments
             for (i in actualTypeArguments.indices) {
-                val tClass = actualTypeArguments[i] as Class<VM>
+                val tClass: Class<Any>
+                try {
+                    tClass = actualTypeArguments[i] as Class<Any>
+                } catch (e: Exception) {
+                    continue
+                }
                 if (ViewModel::class.java.isAssignableFrom(tClass)) {
-                    return ViewModelProvider(fragment.requireActivity())[tClass]
+                    return ViewModelProvider(fragment.requireActivity())[tClass as Class<VM>]
                 }
             }
             return reflexViewModelShared<VM>(aClass.superclass, fragment)
