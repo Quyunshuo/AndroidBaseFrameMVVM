@@ -4,10 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.quyunshuo.base.mvvm.vm.BaseViewModel
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 /**
@@ -32,7 +30,7 @@ class TranslationViewModel : BaseViewModel<TranslationRepository>() {
      * @param original 需要翻译的文本
      */
     fun requestTranslation(original: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             mRepository.getTranslation(original)
                 .onStart {
                     // 请求开始之前的操作
@@ -47,7 +45,7 @@ class TranslationViewModel : BaseViewModel<TranslationRepository>() {
                     // 已完成
                     isLoading.value = false
                 }
-                .collectLatest {
+                .collect {
                     // 获取结果
                     _translationLiveData.value = it
                 }
