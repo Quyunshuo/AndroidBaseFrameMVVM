@@ -1,23 +1,22 @@
 import com.quyunshuo.androidbaseframemvvm.build.*
 
-if (BuildConfig.isAppMode) {
+if (ProjectBuildConfig.isAppMode) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion BuildConfig.compileSdkVersion
-    buildToolsVersion BuildConfig.buildToolsVersion
+    compileSdkVersion ProjectBuildConfig.compileSdkVersion
+    buildToolsVersion ProjectBuildConfig.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion BuildConfig.minSdkVersion
-        targetSdkVersion BuildConfig.targetSdkVersion
-        versionCode BuildConfig.versionCode
-        versionName BuildConfig.versionName
+        minSdkVersion ProjectBuildConfig.minSdkVersion
+        targetSdkVersion ProjectBuildConfig.targetSdkVersion
+        versionCode ProjectBuildConfig.versionCode
+        versionName ProjectBuildConfig.versionName
         testInstrumentationRunner AndroidX.AndroidJUnitRunner
     }
 
@@ -37,7 +36,7 @@ android {
     //根据不同的模式加载不同的AndroidManifest文件
     sourceSets {
         main {
-            if (BuildConfig.isAppMode) {
+            if (ProjectBuildConfig.isAppMode) {
                 manifest.srcFile 'src/main/java/debug/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
@@ -64,7 +63,7 @@ android {
 kapt {
     arguments {
         arg("AROUTER_MODULE_NAME", project.name)
-        arg("eventBusIndex", "${BuildConfig.applicationId}.eventbus.index.${project.name.replace('Lib_', '')}EventIndex")
+        arg("eventBusIndex", "${ProjectBuildConfig.applicationId}.eventbus.index.${project.name.replace('Lib_', '')}EventIndex")
     }
 }
 

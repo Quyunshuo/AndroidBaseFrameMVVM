@@ -1,19 +1,20 @@
 import com.quyunshuo.androidbaseframemvvm.build.*
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
 
 android {
-    compileSdkVersion BuildConfig.compileSdkVersion
-    buildToolsVersion BuildConfig.buildToolsVersion
+    compileSdkVersion ProjectBuildConfig.compileSdkVersion
+    buildToolsVersion ProjectBuildConfig.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion BuildConfig.minSdkVersion
-        targetSdkVersion BuildConfig.targetSdkVersion
-        versionCode BuildConfig.versionCode
-        versionName BuildConfig.versionName
+        minSdkVersion ProjectBuildConfig.minSdkVersion
+        targetSdkVersion ProjectBuildConfig.targetSdkVersion
+        versionCode ProjectBuildConfig.versionCode
+        versionName ProjectBuildConfig.versionName
         testInstrumentationRunner AndroidX.AndroidJUnitRunner
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -71,6 +72,7 @@ dependencies {
     api GitHub.StatusBar
     api GitHub.EventBus
     api GitHub.Bugly
+    api GitHub.BuglyNative
     api GitHub.PermissionX
 
     kapt GitHub.GlideCompiler

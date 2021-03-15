@@ -11,12 +11,12 @@ import org.greenrobot.eventbus.EventBus
  */
 class AppApplication : CommonApplication() {
 
-    override fun initialize() {
+    override fun onCreate() {
         // 开启EventBusAPT,优化反射效率
         EventBus
             .builder()
 //            .addIndex()
             .installDefaultEventBus()
-        super.initialize()
+        super.onCreate()
     }
 }

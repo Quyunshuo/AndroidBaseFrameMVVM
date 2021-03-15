@@ -18,8 +18,8 @@ object Version {
     const val Junit = "4.13"
 
     // Kotlin----------------------------------------------------------------
-    const val Kotlin = "1.4.0"
-    const val Coroutines = "1.3.7"                      // 协程
+    const val Kotlin = "1.4.31"                         // Kotlin
+    const val Coroutines = "1.4.3"                      // 协程
 
     // JetPack---------------------------------------------------------------
     const val LifecycleViewModel = "2.2.0"
@@ -35,12 +35,13 @@ object Version {
     const val MMKV = "1.2.2"                            // 腾讯 MMKV 替代SP
     const val AutoSize = "1.2.1"                        // 屏幕适配
     const val Glide = "4.11.0"                          // Glide
-    const val ARoute = "1.5.0"                          // 阿里路由
-    const val ARouteCompiler = "1.2.2"                  // 阿里路由 APT
+    const val ARoute = "1.5.1"                          // 阿里路由
+    const val ARouteCompiler = "1.5.1"                  // 阿里路由 APT
     const val RecyclerViewAdapter = "3.0.4"             // RecyclerViewAdapter
     const val StatusBar = "1.5.1"                       // 状态栏
     const val EventBus = "3.2.0"                        // 事件总线
-    const val Bugly = "3.2.33"                          // Bugly 异常上报
+    const val Bugly = "3.3.7"                           // Bugly 异常上报
+    const val BuglyNative = "3.8.0"                     // Bugly native异常上报
     const val PermissionX = "1.3.0"                     // 权限申请
     const val LeakCanary = "2.4"                        // 检测内存泄漏
     const val Chuck = "1.1.0"                           // OkHttp 请求信息拦截器(UI)
@@ -99,6 +100,7 @@ object GitHub {
     const val EventBus = "org.greenrobot:eventbus:${Version.EventBus}"
     const val EventBusAPT = "org.greenrobot:eventbus-annotation-processor:${Version.EventBus}"
     const val Bugly = "com.tencent.bugly:crashreport:${Version.Bugly}"
+    const val BuglyNative = "com.tencent.bugly:nativecrashreport:${Version.BuglyNative}"
     const val PermissionX = "com.permissionx.guolindev:permissionx:${Version.PermissionX}"
     const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:${Version.LeakCanary}"
     const val Chuck = "com.readystatesoftware.chuck:library:${Version.Chuck}"

@@ -1,19 +1,21 @@
 import com.quyunshuo.androidbaseframemvvm.build.*
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.alibaba.arouter'
+}
 
 android {
-    compileSdkVersion BuildConfig.compileSdkVersion
-    buildToolsVersion BuildConfig.buildToolsVersion
+    compileSdkVersion ProjectBuildConfig.compileSdkVersion
+    buildToolsVersion ProjectBuildConfig.buildToolsVersion
 
     defaultConfig {
-        applicationId BuildConfig.applicationId
-        minSdkVersion BuildConfig.minSdkVersion
-        targetSdkVersion BuildConfig.targetSdkVersion
-        versionCode BuildConfig.versionCode
-        versionName BuildConfig.versionName
+        applicationId ProjectBuildConfig.applicationId
+        minSdkVersion ProjectBuildConfig.minSdkVersion
+        targetSdkVersion ProjectBuildConfig.targetSdkVersion
+        versionCode ProjectBuildConfig.versionCode
+        versionName ProjectBuildConfig.versionName
         testInstrumentationRunner AndroidX.AndroidJUnitRunner
         multiDexKeepProguard file("multidexKeep.pro")
     }
@@ -37,7 +39,7 @@ android {
                     if (outputFileName != null
                             && outputFileName.endsWith('.apk')
                             && 'release' == variant.buildType.name) {
-                        outputFileName = "${BuildConfig.applicationId}_${defaultConfig.versionCode}(${defaultConfig.versionName}).apk"
+                        outputFileName = "${ProjectBuildConfig.applicationId}_${defaultConfig.versionCode}(${defaultConfig.versionName}).apk"
                     }
                 }
             }
@@ -50,7 +52,7 @@ android {
                     if (outputFileName != null
                             && outputFileName.endsWith('.apk')
                             && 'debug' == variant.buildType.name) {
-                        outputFileName = "${BuildConfig.applicationId}_${defaultConfig.versionCode}(${defaultConfig.versionName}).apk"
+                        outputFileName = "${ProjectBuildConfig.applicationId}_${defaultConfig.versionCode}(${defaultConfig.versionName}).apk"
                     }
                 }
             }
@@ -69,7 +71,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    if (!BuildConfig.isAppMode) {
+    if (!ProjectBuildConfig.isAppMode) {
         // 有业务组件时 把这个去掉 这里只是为了使用base里的依赖库
         implementation project(path: ':Lib_Common')
     } else {
