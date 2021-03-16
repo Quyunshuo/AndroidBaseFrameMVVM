@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.quyunshuo.base.BaseApplication
 import com.quyunshuo.base.BaseApplication.InitDepend
 import com.quyunshuo.base.utils.ActivityStackManager
+import com.quyunshuo.base.utils.ProcessUtils
 import com.quyunshuo.base.utils.SpUtils
 import com.tencent.bugly.crashreport.CrashReport
 
@@ -36,8 +37,11 @@ open class CommonApplication : BaseApplication(), Application.ActivityLifecycleC
      */
     override fun initByFrontDesk(): InitDepend {
         val worker = mutableListOf<() -> String>()
-        worker.add { initMMKV() }
-        worker.add { initARouter() }
+        // 以下只需要在主进程当中初始化 按需要调整
+        if (ProcessUtils.isMainProcess(this)) {
+            worker.add { initMMKV() }
+            worker.add { initARouter() }
+        }
         worker.add { initTencentBugly() }
         return InitDepend(null, worker)
     }
