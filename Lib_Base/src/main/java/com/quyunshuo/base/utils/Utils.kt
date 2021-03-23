@@ -20,9 +20,9 @@ import kotlinx.coroutines.flow.flowOn
  * 以顶层函数存在的常用工具方法
  * startPolling() -> 开启一个轮询
  * sendEvent() -> 发送普通EventBus事件
- * toastShow() -> Toast
  * isNetworkAvailable() -> 检查是否连接网络
  * aRouterJump() -> 阿里路由不带参数跳转
+ * toast() -> 封装ToastUtils
  */
 /**************************************************************************************************/
 /**
@@ -49,27 +49,6 @@ suspend fun startPolling(intervals: Long, block: () -> Unit) {
  * 发送普通EventBus事件
  */
 fun sendEvent(event: Any) = EventBusUtils.postEvent(event)
-
-/**************************************************************************************************/
-private var mToast: Toast? = null
-
-/**
- * Toast
- * Android 9.0之上 已做优化
- */
-fun toastShow(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-        Toast.makeText(BaseApplication.context, text, duration).show()
-    } else {
-        if (mToast != null) {
-            mToast?.setText(text)
-            mToast?.show()
-        } else {
-            mToast = Toast.makeText(BaseApplication.context, text, duration)
-            mToast?.show()
-        }
-    }
-}
 
 /**************************************************************************************************/
 /**
@@ -101,4 +80,23 @@ fun isNetworkAvailable(): Boolean {
  */
 fun aRouterJump(routerUrl: String) {
     ARouter.getInstance().build(routerUrl).navigation()
+}
+
+/**************************************************************************************************/
+/**
+ * toast
+ * @param msg String 文案
+ * @param duration Int 时间
+ */
+fun toast(msg: String, duration: Int = Toast.LENGTH_SHORT) {
+    ToastUtils.showToast(msg, duration)
+}
+
+/**
+ * toast
+ * @param msgId Int String资源ID
+ * @param duration Int 时间
+ */
+fun toast(msgId: Int, duration: Int = Toast.LENGTH_SHORT) {
+    ToastUtils.showToast(msgId, duration)
 }
