@@ -15,10 +15,10 @@ import kotlin.jvm.Throws
 object ProcessUtils {
 
     /**
-     * 获取当前App所有进程
+     * 获取当前所有进程
      *
      * @param context Context 上下文
-     * @return List<ActivityManager.RunningAppProcessInfo> 当前App所有进程
+     * @return List<ActivityManager.RunningAppProcessInfo> 当前所有进程
      */
     fun getRunningAppProcessList(context: Context): List<ActivityManager.RunningAppProcessInfo> {
         val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
@@ -40,7 +40,6 @@ object ProcessUtils {
                 // 判断该进程id是否和进程名一致
                 return (process.processName == processName)
             }
-            break
         }
         return false
     }
