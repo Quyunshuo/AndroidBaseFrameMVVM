@@ -1,5 +1,7 @@
 # <p align="center"> AndroidBaseFrameMVVM 🐽</p>
 
+## 框架已进行部分重构，暂未编写文档及示例demo，等有时间后会根据当前框架编写新的文档及示例demo，本文档目前不是最新的
+
 <p align="center"> AndroidBaseFrameMVVM 是一个 Android 项目 MVVM 架构 开箱即用的框架 </p>
 
 <p align="center"> 该框架基于 Kotlin + Flow + Jetpack + MVVM + 组件化 + Repository 模式实现</p>

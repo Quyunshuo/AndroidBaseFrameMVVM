@@ -1,0 +1,24 @@
+//****************************************
+//*********** lib_net 的配置文件 ***********
+//****************************************
+
+apply from: '../buildGradleScript/base/base_lib.gradle'
+
+import com.quyunshuo.androidbaseframemvvm.buildsrc.*
+
+android {
+    resourcePrefix "net_"
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation project(path: ':lib_base')
+
+    api DependencyConfig.GitHub.OkHttp
+    api DependencyConfig.GitHub.OkHttpInterceptorLogging
+    api DependencyConfig.GitHub.Retrofit
+    api DependencyConfig.GitHub.RetrofitConverterGson
+
+    kapt DependencyConfig.GitHub.AutoServiceAnnotations
+}

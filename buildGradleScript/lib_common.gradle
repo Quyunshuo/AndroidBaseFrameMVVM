@@ -1,0 +1,34 @@
+//****************************************
+//********* lib_common 的配置文件 **********
+//****************************************
+
+apply from: '../buildGradleScript/base/base_lib.gradle'
+
+import com.quyunshuo.androidbaseframemvvm.buildsrc.*
+
+android {
+
+    defaultConfig {
+        // 相关自定义配置
+        resValue "string", "VERSION_STATUS", ProjectBuildConfig.versionStatus
+        resValue "string", "BUGLY_APP_ID", SDKKeyConfig.BUGLY_APP_ID
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    resourcePrefix "common_"
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    api project(path: ':lib_base')
+    api project(path: ':lib_net')
+
+    kapt DependencyConfig.GitHub.GlideCompiler
+    kapt DependencyConfig.GitHub.ARouteCompiler
+    kapt DependencyConfig.GitHub.EventBusAPT
+    kapt DependencyConfig.GitHub.AutoServiceAnnotations
+}

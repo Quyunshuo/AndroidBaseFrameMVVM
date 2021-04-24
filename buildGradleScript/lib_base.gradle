@@ -1,0 +1,59 @@
+//****************************************
+//********** lib_base 的配置文件 ***********
+//****************************************
+
+apply from: '../buildGradleScript/base/base_lib.gradle'
+
+import com.quyunshuo.androidbaseframemvvm.buildsrc.*
+
+android {
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    resourcePrefix "base_"
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    api DependencyConfig.AndroidX.CoreKtx
+    api DependencyConfig.AndroidX.AppCompat
+    api DependencyConfig.AndroidX.ConstraintLayout
+    api DependencyConfig.AndroidX.ActivityKtx
+    api DependencyConfig.AndroidX.FragmentKtx
+    api DependencyConfig.AndroidX.MultiDex
+
+    api DependencyConfig.Android.Material
+
+    api DependencyConfig.Kotlin.Kotlin
+    api DependencyConfig.Kotlin.CoroutinesCore
+    api DependencyConfig.Kotlin.CoroutinesAndroid
+
+    api DependencyConfig.JetPack.LifecycleRuntimeKtx
+    api DependencyConfig.JetPack.LifecycleViewModel
+    api DependencyConfig.JetPack.LifecycleViewModelKtx
+
+    api DependencyConfig.GitHub.Gson
+    api DependencyConfig.GitHub.MMKV
+    api DependencyConfig.GitHub.AutoSize
+    api DependencyConfig.GitHub.Glide
+    api DependencyConfig.GitHub.ARoute
+    api DependencyConfig.GitHub.RecyclerViewAdapter
+    api DependencyConfig.GitHub.StatusBar
+    api DependencyConfig.GitHub.EventBus
+    api DependencyConfig.GitHub.PermissionX
+    api DependencyConfig.GitHub.AutoService
+
+    api DependencyConfig.SDK.TencentBugly
+    api DependencyConfig.SDK.TencentBuglyNative
+    api DependencyConfig.SDK.TencentTBSX5
+
+    kapt DependencyConfig.GitHub.GlideCompiler
+    kapt DependencyConfig.GitHub.ARouteCompiler
+    kapt DependencyConfig.GitHub.EventBusAPT
+    kapt DependencyConfig.GitHub.AutoServiceAnnotations
+
+    debugApi DependencyConfig.GitHub.LeakCanary
+}

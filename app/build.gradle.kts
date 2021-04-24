@@ -1,0 +1,1 @@
+apply("../buildGradleScript/app.gradle")

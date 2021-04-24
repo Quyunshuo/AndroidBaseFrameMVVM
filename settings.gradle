@@ -1,4 +1,0 @@
-include ':Lib_Common'
-include ':Lib_Base'
-include ':app'
-rootProject.name = "AndroidBaseFrameMVVM"
