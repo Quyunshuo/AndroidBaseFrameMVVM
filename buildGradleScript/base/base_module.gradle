@@ -4,7 +4,12 @@
 
 import com.quyunshuo.androidbaseframemvvm.buildsrc.*
 
-apply plugin: 'com.android.library'
+if (ProjectBuildConfig.isAppMode){
+    apply plugin: 'com.android.application'
+}else {
+    apply plugin: 'com.android.library'
+}
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
