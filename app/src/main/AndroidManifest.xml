@@ -19,8 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/base_AppTheme"
-        tools:ignore="UnusedAttribute"
-        tools:replace="android:name,android:label,android:icon, android:theme,android:allowBackup">
+        tools:ignore="UnusedAttribute">
 
         <!-- 屏幕适配基准DP -->
         <meta-data
