@@ -12,10 +12,10 @@ import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusRegister
 import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusUtils
 
 /**
- * @Author: QuYunShuo
- * @Time: 2020/9/10
- * @Class: BaseFrameNotMVVMFragment
- * @Remark: 不使用 MVVM 的 Fragment 基类
+ * 不使用 MVVM 的 Fragment 基类
+ *
+ * @author Qu Yunshuo
+ * @since 9/10/20
  */
 abstract class BaseFrameNotMVVMFragment<VB : ViewBinding> : Fragment(), FrameNotMVVMView<VB> {
 

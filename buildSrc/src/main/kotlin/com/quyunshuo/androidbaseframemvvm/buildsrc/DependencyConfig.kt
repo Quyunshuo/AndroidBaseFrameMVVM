@@ -35,7 +35,9 @@ object DependencyConfig {
         const val Coroutines = "1.4.3"                      // 协程
 
         // JetPack---------------------------------------------------------------
-        const val Lifecycle = "2.3.1"
+        const val Lifecycle = "2.3.1"                       // Lifecycle相关（ViewModel & LiveData & Lifecycle）
+        const val Hilt = "2.35.1"                           // DI框架-Hilt
+        const val HiltAndroidx = "1.0.0"
 
         // GitHub----------------------------------------------------------------
         const val OkHttp = "3.14.9"                         // OkHttp
@@ -105,6 +107,9 @@ object DependencyConfig {
         const val Lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.Lifecycle}"
         const val LifecycleCompilerAPT =
             "androidx.lifecycle:lifecycle-compiler:${Version.Lifecycle}"
+        const val HiltCore = "com.google.dagger:hilt-android:${Version.Hilt}"
+        const val HiltApt = "com.google.dagger:hilt-compiler:${Version.Hilt}"
+        const val HiltAndroidx = "androidx.hilt:hilt-compiler:${Version.HiltAndroidx}"
     }
 
     /**

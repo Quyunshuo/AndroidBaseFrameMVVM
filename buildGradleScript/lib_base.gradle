@@ -3,6 +3,7 @@
 //****************************************
 
 apply from: '../buildGradleScript/base/base_lib.gradle'
+apply plugin: 'dagger.hilt.android.plugin'
 
 import com.quyunshuo.androidbaseframemvvm.buildsrc.*
 
@@ -35,6 +36,7 @@ dependencies {
     api DependencyConfig.JetPack.ViewModelSavedState
     api DependencyConfig.JetPack.LiveData
     api DependencyConfig.JetPack.Lifecycle
+    api DependencyConfig.JetPack.HiltCore
 
     api DependencyConfig.GitHub.Gson
     api DependencyConfig.GitHub.MMKV
@@ -55,6 +57,8 @@ dependencies {
     kapt DependencyConfig.GitHub.ARouteCompiler
     kapt DependencyConfig.GitHub.EventBusAPT
     kapt DependencyConfig.GitHub.AutoServiceAnnotations
+    kapt DependencyConfig.JetPack.HiltApt
+    kapt DependencyConfig.JetPack.HiltAndroidx
     kapt DependencyConfig.JetPack.LifecycleCompilerAPT
 
     debugApi DependencyConfig.GitHub.LeakCanary

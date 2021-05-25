@@ -6,10 +6,10 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 /**
- * @Author: QuYunShuo
- * @Time: 2020/8/27
- * @Class: BaseRepository
- * @Remark: 仓库层 Repository 基类
+ * 仓库层 Repository 基类
+ *
+ * @author Qu Yunshuo
+ * @since 8/27/20
  */
 open class BaseRepository {
 

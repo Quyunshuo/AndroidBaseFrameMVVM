@@ -102,6 +102,7 @@ android {
 * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 * [ViewBinding](https://developer.android.com/topic/libraries/view-binding)
+* [Hilt](https://developer.android.com/jetpack/androidx/releases/hilt)
 * [Android KTX](https://developer.android.com/kotlin/ktx)
 * [OkHttp](https://github.com/square/okhttp)：网络请求
 * [Retrofit](https://github.com/square/retrofit)：网络请求
@@ -365,3 +366,15 @@ fun test() {
 **资料:**  
 
 官方文档: [https://developer.android.com/topic/libraries/architecture/lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle)
+
+### Hilt
+
+**Hilt** 是 **Android** 的依赖项注入库，可减少在项目中执行手动依赖项注入的样板代码。执行手动依赖项注入要求您手动构造每个类及其依赖项，并借助容器重复使用和管理依赖项。
+
+**Hilt** 通过为项目中的每个 **Android** 类提供容器并自动管理其生命周期，提供了一种在应用中使用 **DI（依赖项注入）**的标准方法。**Hilt** 在热门 **DI** 库 **Dagger** 的基础上构建而成，因而能够受益于 **Dagger** 的编译时正确性、运行时性能、可伸缩性和 **Android Studio** 支持。
+
+**资料:**  
+
+目前官方文档还没有更新正式版的，还是 **alpha** 版本的文档：[使用 Hilt 实现依赖项注入](https://developer.android.com/training/dependency-injection/hilt-android)
+
+**Dagger** 的 **Hilt** 文档目前是最新的：[Dagger-Hilt](https://dagger.dev/hilt/)

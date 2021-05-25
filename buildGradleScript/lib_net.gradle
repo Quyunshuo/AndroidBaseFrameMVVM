@@ -3,6 +3,7 @@
 //****************************************
 
 apply from: '../buildGradleScript/base/base_lib.gradle'
+apply plugin: 'dagger.hilt.android.plugin'
 
 import com.quyunshuo.androidbaseframemvvm.buildsrc.*
 
@@ -19,6 +20,9 @@ dependencies {
     api DependencyConfig.GitHub.OkHttpInterceptorLogging
     api DependencyConfig.GitHub.Retrofit
     api DependencyConfig.GitHub.RetrofitConverterGson
+    api DependencyConfig.JetPack.HiltCore
 
     kapt DependencyConfig.GitHub.AutoServiceAnnotations
+    kapt DependencyConfig.JetPack.HiltApt
+    kapt DependencyConfig.JetPack.HiltAndroidx
 }

@@ -13,7 +13,7 @@ import kotlin.system.measureTimeMillis
  * @author Qu Yunshuo
  * @since 4/24/21 5:30 PM
  */
-class BaseApplication : MultiDexApplication() {
+open class BaseApplication : MultiDexApplication() {
 
     private val mCoroutineScope by lazy(mode = LazyThreadSafetyMode.NONE) { MainScope() }
 

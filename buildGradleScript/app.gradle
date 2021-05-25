@@ -8,6 +8,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.alibaba.arouter'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion ProjectBuildConfig.compileSdkVersion
@@ -87,9 +88,13 @@ dependencies {
 
     if (!ProjectBuildConfig.isAppMode) {
         // 有业务组件时 把这个去掉 这里只是为了使用base里的依赖库
-        implementation project(path: ':lib_common')
+        implementation project(path: ':module_home')
     } else {
         implementation project(path: ':lib_common')
     }
+    implementation DependencyConfig.JetPack.HiltCore
+
     kapt DependencyConfig.GitHub.AutoServiceAnnotations
+    kapt DependencyConfig.JetPack.HiltApt
+    kapt DependencyConfig.JetPack.HiltAndroidx
 }

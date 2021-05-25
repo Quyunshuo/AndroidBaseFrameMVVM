@@ -3,10 +3,10 @@ package com.quyunshuo.androidbaseframemvvm.base.mvvm.v
 import androidx.viewbinding.ViewBinding
 
 /**
- * @Author: QuYunShuo
- * @Time: 2020/10/13
- * @Class: FrameNotMVVMView
- * @Remark: View层基类抽象
+ * View层基类抽象
+ *
+ * @author Qu Yunshuo
+ * @since 10/13/20
  */
 interface FrameNotMVVMView<VB : ViewBinding> {
     /**

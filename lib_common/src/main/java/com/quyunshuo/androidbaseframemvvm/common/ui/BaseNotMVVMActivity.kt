@@ -4,9 +4,9 @@ import androidx.viewbinding.ViewBinding
 import com.quyunshuo.androidbaseframemvvm.base.mvvm.v.BaseFrameNotMVVMActivity
 
 /**
- * @Author: QuYunShuo
- * @Time: 2020/9/10
- * @Class: BaseNotMVVMActivity
- * @Remark: 不是 MVVM 模式的基类
+ * 不是 MVVM 模式的基类
+ *
+ * @author Qu Yunshuo
+ * @since 9/10/20
  */
 abstract class BaseNotMVVMActivity<VB : ViewBinding> : BaseFrameNotMVVMActivity<VB>()

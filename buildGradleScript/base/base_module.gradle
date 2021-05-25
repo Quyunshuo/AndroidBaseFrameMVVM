@@ -4,14 +4,15 @@
 
 import com.quyunshuo.androidbaseframemvvm.buildsrc.*
 
-if (ProjectBuildConfig.isAppMode){
+if (ProjectBuildConfig.isAppMode) {
     apply plugin: 'com.android.application'
-}else {
+} else {
     apply plugin: 'com.android.library'
 }
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion ProjectBuildConfig.compileSdkVersion
@@ -81,9 +82,13 @@ dependencies {
     testImplementation DependencyConfig.Android.Junit
     androidTestImplementation DependencyConfig.AndroidX.TestExtJunit
     androidTestImplementation DependencyConfig.AndroidX.TestEspresso
+    implementation DependencyConfig.JetPack.HiltCore
+
     kapt DependencyConfig.GitHub.GlideCompiler
     kapt DependencyConfig.GitHub.ARouteCompiler
     kapt DependencyConfig.GitHub.EventBusAPT
     kapt DependencyConfig.GitHub.AutoServiceAnnotations
+    kapt DependencyConfig.JetPack.HiltApt
+    kapt DependencyConfig.JetPack.HiltAndroidx
     kapt DependencyConfig.JetPack.LifecycleCompilerAPT
 }
