@@ -35,9 +35,7 @@ object DependencyConfig {
         const val Coroutines = "1.4.3"                      // 协程
 
         // JetPack---------------------------------------------------------------
-        const val LifecycleViewModel = "2.2.0"
-        const val LifecycleRuntimeKtx = "2.2.0"
-        const val LifecycleViewModelKtx = "2.2.0"
+        const val Lifecycle = "2.3.1"
 
         // GitHub----------------------------------------------------------------
         const val OkHttp = "3.14.9"                         // OkHttp
@@ -73,7 +71,8 @@ object DependencyConfig {
         const val AndroidJUnitRunner = "androidx.test.runner.AndroidJUnitRunner"
         const val AppCompat = "androidx.appcompat:appcompat:${Version.AppCompat}"
         const val CoreKtx = "androidx.core:core-ktx:${Version.CoreKtx}"
-        const val ConstraintLayout = "androidx.constraintlayout:constraintlayout:${Version.ConstraintLayout}"
+        const val ConstraintLayout =
+            "androidx.constraintlayout:constraintlayout:${Version.ConstraintLayout}"
         const val TestExtJunit = "androidx.test.ext:junit:${Version.TestExtJunit}"
         const val TestEspresso = "androidx.test.espresso:espresso-core:${Version.TestEspresso}"
         const val ActivityKtx = "androidx.activity:activity-ktx:${Version.ActivityKtx}"
@@ -99,9 +98,13 @@ object DependencyConfig {
      * @since 4/24/21 4:02 PM
      */
     object JetPack {
-        const val LifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel:${Version.LifecycleViewModel}"
-        const val LifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.LifecycleRuntimeKtx}"
-        const val LifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.LifecycleViewModelKtx}"
+        const val ViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.Lifecycle}"
+        const val ViewModelSavedState =
+            "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Version.Lifecycle}"
+        const val LiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.Lifecycle}"
+        const val Lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.Lifecycle}"
+        const val LifecycleCompilerAPT =
+            "androidx.lifecycle:lifecycle-compiler:${Version.Lifecycle}"
     }
 
     /**
@@ -112,8 +115,10 @@ object DependencyConfig {
      */
     object Kotlin {
         const val Kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Version.Kotlin}"
-        const val CoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.Coroutines}"
-        const val CoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.Coroutines}"
+        const val CoroutinesCore =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.Coroutines}"
+        const val CoroutinesAndroid =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.Coroutines}"
     }
 
     /**
@@ -124,9 +129,11 @@ object DependencyConfig {
      */
     object GitHub {
         const val OkHttp = "com.squareup.okhttp3:okhttp:${Version.OkHttp}"
-        const val OkHttpInterceptorLogging = "com.squareup.okhttp3:logging-interceptor:${Version.OkHttpInterceptorLogging}"
+        const val OkHttpInterceptorLogging =
+            "com.squareup.okhttp3:logging-interceptor:${Version.OkHttpInterceptorLogging}"
         const val Retrofit = "com.squareup.retrofit2:retrofit:${Version.Retrofit}"
-        const val RetrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Version.RetrofitConverterGson}"
+        const val RetrofitConverterGson =
+            "com.squareup.retrofit2:converter-gson:${Version.RetrofitConverterGson}"
         const val Gson = "com.google.code.gson:gson:${Version.Gson}"
         const val MMKV = "com.tencent:mmkv-static:${Version.MMKV}"
         const val AutoSize = "me.jessyan:autosize:${Version.AutoSize}"
@@ -134,14 +141,16 @@ object DependencyConfig {
         const val GlideCompiler = "com.github.bumptech.glide:compiler:${Version.Glide}"
         const val ARoute = "com.alibaba:arouter-api:${Version.ARoute}"
         const val ARouteCompiler = "com.alibaba:arouter-compiler:${Version.ARouteCompiler}"
-        const val RecyclerViewAdapter = "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Version.RecyclerViewAdapter}"
+        const val RecyclerViewAdapter =
+            "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Version.RecyclerViewAdapter}"
         const val StatusBar = "com.jaeger.statusbarutil:library:${Version.StatusBar}"
         const val EventBus = "org.greenrobot:eventbus:${Version.EventBus}"
         const val EventBusAPT = "org.greenrobot:eventbus-annotation-processor:${Version.EventBus}"
         const val PermissionX = "com.permissionx.guolindev:permissionx:${Version.PermissionX}"
         const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:${Version.LeakCanary}"
         const val AutoService = "com.google.auto.service:auto-service:${Version.AutoService}"
-        const val AutoServiceAnnotations = "com.google.auto.service:auto-service-annotations:${Version.AutoService}"
+        const val AutoServiceAnnotations =
+            "com.google.auto.service:auto-service-annotations:${Version.AutoService}"
     }
 
     /**
@@ -152,7 +161,8 @@ object DependencyConfig {
      */
     object SDK {
         const val TencentBugly = "com.tencent.bugly:crashreport:${Version.TencentBugly}"
-        const val TencentBuglyNative = "com.tencent.bugly:nativecrashreport:${Version.TencentBuglyNative}"
+        const val TencentBuglyNative =
+            "com.tencent.bugly:nativecrashreport:${Version.TencentBuglyNative}"
         const val TencentTBSX5 = "com.tencent.tbs.tbssdk:sdk:${Version.TencentTBSX5}"
     }
 }

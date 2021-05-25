@@ -31,9 +31,10 @@ dependencies {
     api DependencyConfig.Kotlin.CoroutinesCore
     api DependencyConfig.Kotlin.CoroutinesAndroid
 
-    api DependencyConfig.JetPack.LifecycleRuntimeKtx
-    api DependencyConfig.JetPack.LifecycleViewModel
-    api DependencyConfig.JetPack.LifecycleViewModelKtx
+    api DependencyConfig.JetPack.ViewModel
+    api DependencyConfig.JetPack.ViewModelSavedState
+    api DependencyConfig.JetPack.LiveData
+    api DependencyConfig.JetPack.Lifecycle
 
     api DependencyConfig.GitHub.Gson
     api DependencyConfig.GitHub.MMKV
@@ -54,6 +55,7 @@ dependencies {
     kapt DependencyConfig.GitHub.ARouteCompiler
     kapt DependencyConfig.GitHub.EventBusAPT
     kapt DependencyConfig.GitHub.AutoServiceAnnotations
+    kapt DependencyConfig.JetPack.LifecycleCompilerAPT
 
     debugApi DependencyConfig.GitHub.LeakCanary
 }
