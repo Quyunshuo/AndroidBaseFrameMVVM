@@ -57,6 +57,11 @@ class CommonApplication : ApplicationLifecycle {
      */
     override fun onTerminate(application: Application) {}
 
+    /**
+     * 需要立即进行初始化的放在这里进行并行初始化
+     * 需要必须在主线程初始化的放在[InitDepend.mainThreadDepends],反之放在[InitDepend.workerThreadDepends]
+     * @return InitDepend 初始化方法集合
+     */
     override fun initByFrontDesk(): InitDepend {
         val worker = mutableListOf<() -> String>()
         val main = mutableListOf<() -> String>()
