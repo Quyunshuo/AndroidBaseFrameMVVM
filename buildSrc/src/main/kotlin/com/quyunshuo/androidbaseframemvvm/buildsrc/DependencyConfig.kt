@@ -40,27 +40,27 @@ object DependencyConfig {
         const val HiltAndroidx = "1.0.0"
 
         // GitHub----------------------------------------------------------------
-        const val OkHttp = "3.14.9"                         // OkHttp
-        const val OkHttpInterceptorLogging = "3.12.0"       // OkHttp 请求Log拦截器
+        const val OkHttp = "4.9.0"                          // OkHttp
+        const val OkHttpInterceptorLogging = "4.9.1"        // OkHttp 请求Log拦截器
         const val Retrofit = "2.9.0"                        // Retrofit
         const val RetrofitConverterGson = "2.9.0"           // Retrofit Gson 转换器
-        const val Gson = "2.8.6"                            // Gson
-        const val MMKV = "1.2.2"                            // 腾讯 MMKV 替代SP
+        const val Gson = "2.8.7"                            // Gson
+        const val MMKV = "1.2.9"                            // 腾讯 MMKV 替代SP
         const val AutoSize = "1.2.1"                        // 屏幕适配
-        const val Glide = "4.11.0"                          // Glide
+        const val Glide = "4.12.0"                          // Glide
         const val ARoute = "1.5.1"                          // 阿里路由
         const val ARouteCompiler = "1.5.1"                  // 阿里路由 APT
         const val RecyclerViewAdapter = "3.0.4"             // RecyclerViewAdapter
         const val StatusBar = "1.5.1"                       // 状态栏
         const val EventBus = "3.2.0"                        // 事件总线
-        const val PermissionX = "1.3.0"                     // 权限申请
-        const val LeakCanary = "2.4"                        // 检测内存泄漏
-        const val AutoService = "1.0"                     // 自动生成SPI暴露服务文件
+        const val PermissionX = "1.4.0"                     // 权限申请
+        const val LeakCanary = "2.7"                        // 检测内存泄漏
+        const val AutoService = "1.0"                       // 自动生成SPI暴露服务文件
 
         // 第三方SDK--------------------------------------------------------------
-        const val TencentBugly = "3.3.7"                 // 腾讯Bugly 异常上报
-        const val TencentBuglyNative = "3.8.0"                     // Bugly native异常上报
-        const val TencentTBSX5 = "43939"                      // 腾讯X5WebView
+        const val TencentBugly = "3.3.9"                    // 腾讯Bugly 异常上报
+        const val TencentBuglyNative = "3.8.0"              // Bugly native异常上报
+        const val TencentTBSX5 = "43939"                    // 腾讯X5WebView
     }
 
     /**
