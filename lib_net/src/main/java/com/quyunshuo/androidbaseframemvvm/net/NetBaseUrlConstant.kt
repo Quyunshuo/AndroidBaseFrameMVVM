@@ -6,7 +6,7 @@ package com.quyunshuo.androidbaseframemvvm.net
  * @author Qu Yunshuo
  * @since 4/17/21 3:27 PM
  */
-internal object NetBaseUrl {
+internal object NetBaseUrlConstant {
 
-    const val BASE_URLl = ""
+    const val MAIN_URL = ""
 }

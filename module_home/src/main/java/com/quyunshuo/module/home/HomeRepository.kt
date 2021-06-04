@@ -1,6 +1,7 @@
 package com.quyunshuo.module.home
 
 import com.quyunshuo.androidbaseframemvvm.base.mvvm.m.BaseRepository
+import com.quyunshuo.module.home.net.HomeApiService
 import kotlinx.coroutines.delay
 import javax.inject.Inject
 
@@ -11,6 +12,9 @@ import javax.inject.Inject
  * @since 5/25/21 5:42 PM
  */
 class HomeRepository @Inject constructor() : BaseRepository() {
+
+    @Inject
+    lateinit var mApi: HomeApiService
 
     /**
      * 模拟获取数据
