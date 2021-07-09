@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import com.alibaba.android.arouter.launcher.ARouter
@@ -98,4 +99,31 @@ fun toast(msg: String, duration: Int = Toast.LENGTH_SHORT) {
  */
 fun toast(msgId: Int, duration: Int = Toast.LENGTH_SHORT) {
     ToastUtils.showToast(msgId, duration)
+}
+/**************************************************************************************************/
+/**
+ * 获取App版本号
+ * @return Long App版本号
+ */
+fun getVersionCode(): Long {
+    val packageInfo = BaseApplication.context
+        .packageManager
+        .getPackageInfo(BaseApplication.context.packageName, 0)
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        packageInfo.longVersionCode
+    } else {
+        packageInfo.versionCode.toLong()
+    }
+}
+
+/**************************************************************************************************/
+/**
+ * 获取App版本名
+ * @return String App版本名
+ */
+fun getVersionName(): String {
+    return BaseApplication.context
+        .packageManager
+        .getPackageInfo(BaseApplication.context.packageName, 0)
+        .versionName
 }
