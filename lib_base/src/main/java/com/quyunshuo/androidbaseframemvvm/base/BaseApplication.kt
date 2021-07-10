@@ -1,9 +1,11 @@
-package com.quyunshuo.androidbaseframemvvm.base.app
+package com.quyunshuo.androidbaseframemvvm.base
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import androidx.multidex.MultiDexApplication
+import com.quyunshuo.androidbaseframemvvm.base.app.ActivityLifecycleCallbacksImpl
+import com.quyunshuo.androidbaseframemvvm.base.app.LoadModuleProxy
 import kotlinx.coroutines.*
 import kotlin.system.measureTimeMillis
 

@@ -7,7 +7,7 @@ import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.google.auto.service.AutoService
 import com.quyunshuo.androidbaseframemvvm.base.app.ApplicationLifecycle
-import com.quyunshuo.androidbaseframemvvm.base.app.BaseApplication
+import com.quyunshuo.androidbaseframemvvm.base.BaseApplication
 import com.quyunshuo.androidbaseframemvvm.base.app.InitDepend
 import com.quyunshuo.androidbaseframemvvm.base.constant.VersionStatus
 import com.quyunshuo.androidbaseframemvvm.base.utils.ProcessUtils

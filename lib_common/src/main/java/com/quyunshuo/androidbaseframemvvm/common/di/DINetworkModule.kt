@@ -1,7 +1,7 @@
-package com.quyunshuo.androidbaseframemvvm.net.di
+package com.quyunshuo.androidbaseframemvvm.common.di
 
 import com.quyunshuo.androidbaseframemvvm.base.BuildConfig
-import com.quyunshuo.androidbaseframemvvm.net.NetBaseUrlConstant
+import com.quyunshuo.androidbaseframemvvm.common.constant.NetBaseUrlConstant
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

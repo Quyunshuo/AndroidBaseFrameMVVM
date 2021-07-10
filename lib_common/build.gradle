@@ -2,7 +2,7 @@
 //********* lib_common 的配置文件 **********
 //****************************************
 
-apply from: '../buildGradleScript/base/base_lib.gradle'
+apply from: '../base_lib.gradle'
 
 import com.quyunshuo.androidbaseframemvvm.buildsrc.*
 
@@ -25,7 +25,6 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     api project(path: ':lib_base')
-    api project(path: ':lib_net')
 
     api DependencyConfig.JetPack.HiltCore
 

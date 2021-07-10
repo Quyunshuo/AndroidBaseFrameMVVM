@@ -1,1 +1,0 @@
-apply("../buildGradleScript/module_home.gradle")

@@ -1,6 +1,6 @@
 package com.quyunshuo.androidbaseframemvvm.app
 
-import com.quyunshuo.androidbaseframemvvm.base.app.BaseApplication
+import com.quyunshuo.androidbaseframemvvm.base.BaseApplication
 import dagger.hilt.android.HiltAndroidApp
 import org.greenrobot.eventbus.EventBus
 

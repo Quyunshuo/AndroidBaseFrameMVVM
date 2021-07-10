@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.quyunshuo.androidbaseframemvvm.base.app.BaseApplication
+import com.quyunshuo.androidbaseframemvvm.base.BaseApplication
 import java.lang.reflect.Field
 
 /**

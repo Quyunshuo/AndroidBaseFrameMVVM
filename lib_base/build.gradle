@@ -2,7 +2,7 @@
 //********** lib_base 的配置文件 ***********
 //****************************************
 
-apply from: '../buildGradleScript/base/base_lib.gradle'
+apply from: '../base_lib.gradle'
 apply plugin: 'dagger.hilt.android.plugin'
 
 import com.quyunshuo.androidbaseframemvvm.buildsrc.*
@@ -48,6 +48,10 @@ dependencies {
     api DependencyConfig.GitHub.EventBus
     api DependencyConfig.GitHub.PermissionX
     api DependencyConfig.GitHub.AutoService
+    api DependencyConfig.GitHub.OkHttp
+    api DependencyConfig.GitHub.OkHttpInterceptorLogging
+    api DependencyConfig.GitHub.Retrofit
+    api DependencyConfig.GitHub.RetrofitConverterGson
 
     api DependencyConfig.SDK.TencentBugly
     api DependencyConfig.SDK.TencentBuglyNative

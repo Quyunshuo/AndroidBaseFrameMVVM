@@ -2,7 +2,7 @@
 //******** module_home 的配置文件 *********
 //****************************************
 
-apply from: '../buildGradleScript/base/base_module.gradle'
+apply from: '../base_module.gradle'
 
 android {
     resourcePrefix "home_"

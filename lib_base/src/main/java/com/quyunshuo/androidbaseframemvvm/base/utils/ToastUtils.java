@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.StringRes;
 
-import com.quyunshuo.androidbaseframemvvm.base.app.BaseApplication;
+import com.quyunshuo.androidbaseframemvvm.base.BaseApplication;
 
 import java.lang.reflect.Field;
 

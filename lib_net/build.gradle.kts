@@ -1,1 +1,0 @@
-apply("../buildGradleScript/lib_net.gradle")

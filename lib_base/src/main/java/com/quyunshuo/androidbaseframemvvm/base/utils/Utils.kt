@@ -1,14 +1,10 @@
 package com.quyunshuo.androidbaseframemvvm.base.utils
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import com.alibaba.android.arouter.launcher.ARouter
-import com.quyunshuo.androidbaseframemvvm.base.app.BaseApplication
+import com.quyunshuo.androidbaseframemvvm.base.BaseApplication
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
@@ -16,15 +12,6 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-/**
- * 以顶层函数存在的常用工具方法
- * startPolling() -> 开启一个轮询
- * sendEvent() -> 发送普通EventBus事件
- * isNetworkAvailable() -> 检查是否连接网络
- * aRouterJump() -> 阿里路由不带参数跳转
- * toast() -> 封装ToastUtils
- */
-/**************************************************************************************************/
 /**
  * 使用 Flow 做的简单的轮询
  * 请使用单独的协程来进行管理该 Flow
@@ -49,29 +36,6 @@ suspend fun startPolling(intervals: Long, block: () -> Unit) {
  * 发送普通EventBus事件
  */
 fun sendEvent(event: Any) = EventBusUtils.postEvent(event)
-
-/**************************************************************************************************/
-/**
- * 判断是否连接网络
- */
-@SuppressLint("MissingPermission")
-fun isNetworkAvailable(): Boolean {
-    val connectivityManager: ConnectivityManager? =
-        BaseApplication.context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    if (connectivityManager == null) {
-        return false
-    } else {
-        val allNetworkInfo: Array<NetworkInfo>? = connectivityManager.allNetworkInfo
-        if (allNetworkInfo != null && allNetworkInfo.isNotEmpty()) {
-            allNetworkInfo.forEach {
-                if (it.state == NetworkInfo.State.CONNECTED) {
-                    return true
-                }
-            }
-        }
-    }
-    return false
-}
 
 /**************************************************************************************************/
 /**
