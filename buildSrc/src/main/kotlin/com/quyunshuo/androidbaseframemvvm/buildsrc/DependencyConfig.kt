@@ -31,8 +31,8 @@ object DependencyConfig {
         const val Material = "1.2.0"                        // 材料设计UI套件
 
         // Kotlin----------------------------------------------------------------
-        const val Kotlin = "1.4.32"
-        const val Coroutines = "1.4.3"                      // 协程
+        const val Kotlin = "1.5.10"
+        const val Coroutines = "1.5.0"                      // 协程
 
         // JetPack---------------------------------------------------------------
         const val Lifecycle = "2.3.1"                       // Lifecycle相关（ViewModel & LiveData & Lifecycle）
