@@ -10,28 +10,26 @@ import dagger.hilt.android.AndroidEntryPoint
  * - 文件描述 : 测试fragment
  */
 @AndroidEntryPoint
-class InternalFragment : BaseFragment<HomeFragmentInternalLayoutBinding>() {
+class InternalFragment : BaseFragment<HomeFragmentInternalLayoutBinding, InternalViewModel>() {
 
-    private val mViewModel by viewModels<InternalViewModel>()
+    override val mViewModel by viewModels<InternalViewModel>()
 
-    override fun HomeFragmentInternalLayoutBinding.initView() {
+    override fun HomeFragmentInternalLayoutBinding.initView() {}
 
-    }
-
-    override fun initLiveDataObserve() {
+    override fun initObserve() {
         mViewModel.recreatedCont.observe(viewLifecycleOwner) {
             mBinding.recreateContTv.text = "重建次数 $it"
         }
         mViewModel.firstData.observe(viewLifecycleOwner) {
             mBinding.loadDataTv.text = it
         }
-        mViewModel.isLoading.observe(viewLifecycleOwner) {
-            mBinding.loadingStatusTv.text = if (it) {
-                "正在加载..."
-            } else {
-                "加载完成！"
-            }
-        }
+//        mViewModel.isLoading.observe(viewLifecycleOwner) {
+//            mBinding.loadingStatusTv.text = if (it) {
+//                "正在加载..."
+//            } else {
+//                "加载完成！"
+//            }
+//        }
     }
 
     override fun initRequestData() {
@@ -43,6 +41,4 @@ class InternalFragment : BaseFragment<HomeFragmentInternalLayoutBinding>() {
         }
         mViewModel.getData()
     }
-
-
 }

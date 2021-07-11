@@ -1,12 +1,10 @@
-package com.quyunshuo.module.home
+package com.quyunshuo.module.home.activity
 
 import android.content.Intent
 import android.graphics.Color
 import androidx.activity.viewModels
 import com.quyunshuo.androidbaseframemvvm.common.ui.BaseActivity
-import com.quyunshuo.module.home.activity.InternalPagerActivity
 import com.quyunshuo.module.home.databinding.HomeActivityMainBinding
-import com.quyunshuo.module.home.fragment.InternalFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -16,12 +14,12 @@ import dagger.hilt.android.AndroidEntryPoint
  * @since 5/22/21 2:26 PM
  */
 @AndroidEntryPoint
-class MainActivity : BaseActivity<HomeActivityMainBinding>() {
+class MainActivity : BaseActivity<HomeActivityMainBinding, HomeViewModel>() {
 
     /**
      * 通过 viewModels() + Hilt 获取 ViewModel 实例
      */
-    private val mViewModel by viewModels<HomeViewModel>()
+    override val mViewModel by viewModels<HomeViewModel>()
 
     override fun HomeActivityMainBinding.initView() {
         goToNextBtn.setOnClickListener {
@@ -29,8 +27,7 @@ class MainActivity : BaseActivity<HomeActivityMainBinding>() {
         }
     }
 
-    override fun initLiveDataObserve() {
-
+    override fun initObserve() {
         // 订阅数据
         mViewModel.data.observe(this, {
             mBinding.vTvHello.text = it

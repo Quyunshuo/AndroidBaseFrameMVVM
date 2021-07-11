@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.alibaba.android.arouter.launcher.ARouter
+import com.quyunshuo.androidbaseframemvvm.base.mvvm.vm.BaseViewModel
 import com.quyunshuo.androidbaseframemvvm.base.utils.BindingReflex
 import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusRegister
 import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusUtils
@@ -18,11 +19,13 @@ import com.quyunshuo.androidbaseframemvvm.base.utils.ViewRecreateHelper
  * @author Qu Yunshuo
  * @since 8/27/20
  */
-abstract class BaseFrameFragment<VB : ViewBinding> : Fragment(), FrameView<VB> {
+abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment(), FrameView<VB> {
 
     protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
         BindingReflex.reflexViewBinding(javaClass, layoutInflater)
     }
+
+    protected abstract val mViewModel: VM
 
     /**
      * fragment状态保存工具类
@@ -45,8 +48,9 @@ abstract class BaseFrameFragment<VB : ViewBinding> : Fragment(), FrameView<VB> {
         ARouter.getInstance().inject(this)
         // 注册EventBus
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.register(this)
+
         mBinding.initView()
-        initLiveDataObserve()
+        initObserve()
         initRequestData()
     }
 
@@ -65,16 +69,17 @@ abstract class BaseFrameFragment<VB : ViewBinding> : Fragment(), FrameView<VB> {
         super.onSaveInstanceState(outState)
     }
 
+    /**
+     * - fragment状态保存帮助类；
+     * - 暂时没有其他需要保存的--空继承
+     */
+    private class FragmentStatusHelper(savedInstanceState: Bundle? = null) :
+        ViewRecreateHelper(savedInstanceState)
+
     override fun onDestroy() {
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.unRegister(
             this
         )
         super.onDestroy()
     }
-
-    /**
-     * - fragment状态保存帮助类；
-     * - 暂时没有其他需要保存的--空继承
-     */
-    private class FragmentStatusHelper(savedInstanceState: Bundle? = null) : ViewRecreateHelper(savedInstanceState)
 }

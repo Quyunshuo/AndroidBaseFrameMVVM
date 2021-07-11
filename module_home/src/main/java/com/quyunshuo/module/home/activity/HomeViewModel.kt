@@ -1,4 +1,4 @@
-package com.quyunshuo.module.home
+package com.quyunshuo.module.home.activity
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

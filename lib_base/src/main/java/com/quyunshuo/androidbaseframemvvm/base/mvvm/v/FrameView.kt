@@ -9,18 +9,19 @@ import androidx.viewbinding.ViewBinding
  * @since 10/13/20
  */
 interface FrameView<VB : ViewBinding> {
+
     /**
      * 初始化View
      */
     fun VB.initView()
 
     /**
-     * 初始化LiveData的订阅关系
+     * 订阅LiveData
      */
-    fun initLiveDataObserve()
+    fun initObserve()
 
     /**
-     * 初始化界面创建时的数据请求,尝试在此方法内调用[isRecreate]进行重建判断，防止数据重复获取
+     * 用于在页面创建时进行请求接口
      */
     fun initRequestData()
 

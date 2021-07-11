@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,7 +18,8 @@ import javax.inject.Inject
  * - 文件描述 :
  */
 @HiltViewModel
-class InternalViewModel @Inject constructor(private val repository: InternalRepository) : BaseViewModel() {
+class InternalViewModel @Inject constructor(private val repository: InternalRepository) :
+    BaseViewModel() {
 
     /**
      * 重建计数
@@ -41,13 +43,14 @@ class InternalViewModel @Inject constructor(private val repository: InternalRepo
      * 获取数据
      */
     fun getData() {
-        isLoading.value = true
         viewModelScope.launch(Dispatchers.IO) {
             repository.getData()
                 .catch {
                     Log.d("DJC", "getData: ")
-                }.collect {
-                    isLoading.postValue(false)
+                }
+                .onStart { changeStateView(loading = true) }
+                .collect {
+                    changeStateView(hide = true)
                     delay(200)
                     firstData.postValue(it)
                 }
@@ -56,7 +59,6 @@ class InternalViewModel @Inject constructor(private val repository: InternalRepo
 
     override fun onCleared() {
         super.onCleared()
-        Log.d("DJC","InternalViewModel Clear")
+        Log.d("DJC", "InternalViewModel Clear")
     }
-
 }

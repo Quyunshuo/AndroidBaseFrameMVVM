@@ -1,4 +1,4 @@
-package com.quyunshuo.module.home
+package com.quyunshuo.module.home.activity
 
 import com.quyunshuo.androidbaseframemvvm.base.mvvm.m.BaseRepository
 import com.quyunshuo.module.home.net.HomeApiService
@@ -19,7 +19,7 @@ class HomeRepository @Inject constructor() : BaseRepository() {
     /**
      * 模拟获取数据
      */
-    suspend fun getData() = flowRequest<String> {
+    suspend fun getData() = request<String> {
         delay(1000L)
         emit("Hello Hilt")
     }
