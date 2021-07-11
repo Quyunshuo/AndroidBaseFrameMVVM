@@ -47,7 +47,6 @@ object DependencyConfig {
         const val Gson = "2.8.7"                            // Gson
         const val MMKV = "1.2.9"                            // 腾讯 MMKV 替代SP
         const val AutoSize = "1.2.1"                        // 屏幕适配
-        const val Glide = "4.12.0"                          // Glide
         const val ARoute = "1.5.1"                          // 阿里路由
         const val ARouteCompiler = "1.5.1"                  // 阿里路由 APT
         const val RecyclerViewAdapter = "3.0.4"             // RecyclerViewAdapter
@@ -56,6 +55,7 @@ object DependencyConfig {
         const val PermissionX = "1.4.0"                     // 权限申请
         const val LeakCanary = "2.7"                        // 检测内存泄漏
         const val AutoService = "1.0"                       // 自动生成SPI暴露服务文件
+        const val Coil = "1.3.0"                            // Kotlin图片加载框架
 
         // 第三方SDK--------------------------------------------------------------
         const val TencentBugly = "3.3.9"                    // 腾讯Bugly 异常上报
@@ -142,8 +142,6 @@ object DependencyConfig {
         const val Gson = "com.google.code.gson:gson:${Version.Gson}"
         const val MMKV = "com.tencent:mmkv-static:${Version.MMKV}"
         const val AutoSize = "me.jessyan:autosize:${Version.AutoSize}"
-        const val Glide = "com.github.bumptech.glide:glide:${Version.Glide}"
-        const val GlideCompiler = "com.github.bumptech.glide:compiler:${Version.Glide}"
         const val ARoute = "com.alibaba:arouter-api:${Version.ARoute}"
         const val ARouteCompiler = "com.alibaba:arouter-compiler:${Version.ARouteCompiler}"
         const val RecyclerViewAdapter =
@@ -156,6 +154,10 @@ object DependencyConfig {
         const val AutoService = "com.google.auto.service:auto-service:${Version.AutoService}"
         const val AutoServiceAnnotations =
             "com.google.auto.service:auto-service-annotations:${Version.AutoService}"
+        const val Coil = "io.coil-kt:coil:${Version.Coil}"
+        const val CoilGIF = "io.coil-kt:coil-gif:${Version.Coil}"
+        const val CoilSVG = "io.coil-kt:coil-svg:${Version.Coil}"
+        const val CoilVideo = "io.coil-kt:coil-video:${Version.Coil}"
     }
 
     /**

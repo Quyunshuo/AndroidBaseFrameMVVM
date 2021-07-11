@@ -100,7 +100,7 @@ android {
 * [OkHttp](https://github.com/square/okhttp)：网络请求
 * [Retrofit](https://github.com/square/retrofit)：网络请求
 * [MMKV](https://github.com/Tencent/MMKV)：腾讯基于 **mmap** 内存映射的 **key-value** 本地存储组件
-* [Glide](https://github.com/bumptech/glide)：快速高效的 **Android** 图片加载库
+* [Coil](https://github.com/coil-kt/coil)：一个 Android 图片加载库，通过 Kotlin 协程的方式加载图片
 * [ARoute](https://github.com/alibaba/ARouter)：阿里用于帮助 **Android App** 进行组件化改造的框架 —— 支持模块间的路由、通信、解耦
 * [BaseRecyclerViewAdapterHelper](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)：一个强大并且灵活的 **RecyclerViewAdapter**
 * [StatusBarUtil](https://github.com/laobie/StatusBarUtil)：状态栏
@@ -371,3 +371,23 @@ fun test() {
 目前官方文档还没有更新正式版的，还是 **alpha** 版本的文档：[使用 Hilt 实现依赖项注入](https://developer.android.com/training/dependency-injection/hilt-android)
 
 **Dagger** 的 **Hilt** 文档目前是最新的：[Dagger-Hilt](https://dagger.dev/hilt/)
+
+### Coil
+
+**Coil **是一个 Android 图片加载库，通过 Kotlin 协程的方式加载图片。特点如下：
+
+- **更快**: Coil 在性能上有很多优化，包括内存缓存和磁盘缓存，把缩略图存保存在内存中，循环利用 bitmap，自动暂停和取消图片网络请求等。
+- **更轻量级**: Coil 只有2000个方法（前提是你的 APP 里面集成了 OkHttp 和 Coroutines），Coil 和 Picasso 的方法数差不多，相比 Glide 和 Fresco 要轻量很多。
+- **更容易使用**: Coil 的 API 充分利用了 Kotlin 语言的新特性，简化和减少了很多样板代码。
+- **更流行**: Coil 首选 Kotlin 语言开发并且使用包含 Coroutines, OkHttp, Okio 和 AndroidX Lifecycles 在内最流行的开源库。
+
+**Coil** 名字的由来：取 **Co**routine **I**mage **L**oader 首字母得来。
+
+**资料:**  
+
+官方文档: [https://coil-kt.github.io/coil/](https://coil-kt.github.io/coil/)
+
+三方库源码笔记（13）-可能是全网第一篇 Coil 的源码分析文章：[https://juejin.cn/post/6897872882051842061](https://juejin.cn/post/6897872882051842061)
+
+【奇技淫巧】新的图片加载库？基于Kotlin协程的图片加载库——Coil：[https://juejin.cn/post/6844904159527829518](https://juejin.cn/post/6844904159527829518)
+

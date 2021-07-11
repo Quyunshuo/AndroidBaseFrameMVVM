@@ -28,7 +28,6 @@ dependencies {
 
     api DependencyConfig.JetPack.HiltCore
 
-    kapt DependencyConfig.GitHub.GlideCompiler
     kapt DependencyConfig.GitHub.ARouteCompiler
     kapt DependencyConfig.GitHub.EventBusAPT
     kapt DependencyConfig.GitHub.AutoServiceAnnotations

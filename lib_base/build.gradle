@@ -41,7 +41,6 @@ dependencies {
     api DependencyConfig.GitHub.Gson
     api DependencyConfig.GitHub.MMKV
     api DependencyConfig.GitHub.AutoSize
-    api DependencyConfig.GitHub.Glide
     api DependencyConfig.GitHub.ARoute
     api DependencyConfig.GitHub.RecyclerViewAdapter
     api DependencyConfig.GitHub.StatusBar
@@ -52,12 +51,15 @@ dependencies {
     api DependencyConfig.GitHub.OkHttpInterceptorLogging
     api DependencyConfig.GitHub.Retrofit
     api DependencyConfig.GitHub.RetrofitConverterGson
+    api DependencyConfig.GitHub.Coil
+    api DependencyConfig.GitHub.CoilGIF
+    api DependencyConfig.GitHub.CoilSVG
+    api DependencyConfig.GitHub.CoilVideo
 
     api DependencyConfig.SDK.TencentBugly
     api DependencyConfig.SDK.TencentBuglyNative
     api DependencyConfig.SDK.TencentTBSX5
 
-    kapt DependencyConfig.GitHub.GlideCompiler
     kapt DependencyConfig.GitHub.ARouteCompiler
     kapt DependencyConfig.GitHub.EventBusAPT
     kapt DependencyConfig.GitHub.AutoServiceAnnotations
