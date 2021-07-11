@@ -12,6 +12,7 @@ import com.quyunshuo.androidbaseframemvvm.base.app.InitDepend
 import com.quyunshuo.androidbaseframemvvm.base.constant.VersionStatus
 import com.quyunshuo.androidbaseframemvvm.base.utils.ProcessUtils
 import com.quyunshuo.androidbaseframemvvm.base.utils.SpUtils
+import com.quyunshuo.androidbaseframemvvm.base.utils.network.NetworkStateClient
 import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.smtt.export.external.TbsCoreSettings
 import com.tencent.smtt.sdk.QbSdk
@@ -69,6 +70,7 @@ class CommonApplication : ApplicationLifecycle {
         if (ProcessUtils.isMainProcess(BaseApplication.context)) {
             worker.add { initMMKV() }
             worker.add { initARouter() }
+            main.add { initNetworkStateClient() }
         }
         worker.add { initTencentBugly() }
         return InitDepend(main, worker)
@@ -79,6 +81,15 @@ class CommonApplication : ApplicationLifecycle {
      */
     override fun initByBackstage() {
         initX5WebViewCore()
+    }
+
+    /**
+     * 初始化网络状态监听客户端
+     * @return Unit
+     */
+    private fun initNetworkStateClient(): String {
+        NetworkStateClient.register()
+        return "NetworkStateClient -->> init complete"
     }
 
     /**
