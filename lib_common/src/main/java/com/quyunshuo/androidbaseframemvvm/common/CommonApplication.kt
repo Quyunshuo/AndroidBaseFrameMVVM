@@ -27,11 +27,6 @@ import com.tencent.smtt.sdk.QbSdk.PreInitCallback
 @AutoService(ApplicationLifecycle::class)
 class CommonApplication : ApplicationLifecycle {
 
-    /**
-     * 项目当前的版本状态
-     */
-    val versionStatus: String by lazy { BaseApplication.context.getString(R.string.VERSION_STATUS) }
-
     companion object {
         // 全局CommonApplication
         @SuppressLint("StaticFieldLeak")
@@ -132,7 +127,7 @@ class CommonApplication : ApplicationLifecycle {
      */
     private fun initARouter(): String {
         // 测试环境下打开ARouter的日志和调试模式 正式环境需要关闭
-        if (versionStatus == VersionStatus.ALPHA || versionStatus == VersionStatus.BETA) {
+        if (BuildConfig.VERSION_TYPE != VersionStatus.RELEASE) {
             ARouter.openLog()     // 打印日志
             ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
@@ -150,7 +145,7 @@ class CommonApplication : ApplicationLifecycle {
         CrashReport.initCrashReport(
             BaseApplication.context,
             BaseApplication.context.getString(R.string.BUGLY_APP_ID),
-            versionStatus == VersionStatus.ALPHA || versionStatus == VersionStatus.BETA
+            BuildConfig.VERSION_TYPE != VersionStatus.RELEASE
         )
         return "Bugly -->> init complete"
     }

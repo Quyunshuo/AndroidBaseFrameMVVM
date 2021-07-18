@@ -40,35 +40,36 @@ android {
 //    }
 
     buildTypes {
-        release {
+        // 对应 ALPHA 版本
+        debug {
+            buildConfigField "String", "VERSION_TYPE", "\"${ProjectBuildConfig.Version.ALPHA}\""
 //            signingConfig signingConfigs.releaseConfig
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            applicationVariants.all { variant ->
-                variant.outputs.all { output ->
-                    if (outputFileName != null
-                            && outputFileName.endsWith('.apk')
-                            && 'release' == variant.buildType.name) {
-                        outputFileName = "${ProjectBuildConfig.applicationId}" +
-                                "_${ProjectBuildConfig.versionCode}" +
-                                "(${ProjectBuildConfig.versionName}).apk"
-                    }
-                }
-            }
         }
-        debug {
+        beta {
+            buildConfigField "String", "VERSION_TYPE", "\"${ProjectBuildConfig.Version.BETA}\""
+//            signingConfig signingConfigs.releaseConfig
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            applicationVariants.all { variant ->
-                variant.outputs.all { output ->
-                    if (outputFileName != null
-                            && outputFileName.endsWith('.apk')
-                            && 'debug' == variant.buildType.name) {
-                        outputFileName = "${ProjectBuildConfig.applicationId}" +
-                                "_${ProjectBuildConfig.versionCode}" +
-                                "(${ProjectBuildConfig.versionName}).apk"
-                    }
-                }
+        }
+        release {
+            buildConfigField "String", "VERSION_TYPE", "\"${ProjectBuildConfig.Version.RELEASE}\""
+//            signingConfig signingConfigs.releaseConfig
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 自定义打包apk的文件名
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (outputFileName != null && outputFileName.endsWith('.apk')) {
+                outputFileName = "${ProjectBuildConfig.applicationId}" +
+                        "_${ProjectBuildConfig.versionCode}" +
+                        "(${ProjectBuildConfig.versionName})" +
+                        "_${variant.buildType.name}" +
+                        ".apk"
             }
         }
     }

@@ -374,7 +374,7 @@ fun test() {
 
 ### Coil
 
-**Coil **是一个 Android 图片加载库，通过 Kotlin 协程的方式加载图片。特点如下：
+**Coil** 是一个 Android 图片加载库，通过 Kotlin 协程的方式加载图片。特点如下：
 
 - **更快**: Coil 在性能上有很多优化，包括内存缓存和磁盘缓存，把缩略图存保存在内存中，循环利用 bitmap，自动暂停和取消图片网络请求等。
 - **更轻量级**: Coil 只有2000个方法（前提是你的 APP 里面集成了 OkHttp 和 Coroutines），Coil 和 Picasso 的方法数差不多，相比 Glide 和 Fresco 要轻量很多。

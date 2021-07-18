@@ -9,8 +9,6 @@ import com.quyunshuo.androidbaseframemvvm.buildsrc.*
 android {
 
     defaultConfig {
-        // 相关自定义配置
-        resValue "string", "VERSION_STATUS", ProjectBuildConfig.versionStatus
         resValue "string", "BUGLY_APP_ID", SDKKeyConfig.BUGLY_APP_ID
     }
 
