@@ -83,7 +83,7 @@ android {
 
 ## **MVVM相关**
 
-* **MVVM** 采用 **Jetpack** 组件 + **Repository** 设计模式 实现，所使用的 **Jetpack** 并不是很多，像 **DataBinding**、**Hilt**、**Room** 等并没有使用，如果需要可以添加。采用架构模式目的就是为了解偶代码，对代码进行分层，各模块各司其职，所以既然使用了架构模式那就要遵守好规范。
+* **MVVM** 采用 **Jetpack** 组件 + **Repository** 设计模式 实现，所使用的 **Jetpack** 并不是很多，像 **DataBinding**、**Paging 3**、**Room** 等并没有使用，如果需要可以添加。采用架构模式目的就是为了解偶代码，对代码进行分层，各模块各司其职，所以既然使用了架构模式那就要遵守好规范。
 * **Repository** 仓库层负责数据的提供，**ViewModel** 无需关心数据的来源，**Repository** 内避免使用 **LiveData**，框架里使用了 **Kotlin** 协程的 **Flow** 进行处理请求或访问数据库，**Repository** 的函数会返回一个 **Flow** 给 **ViewModel** 的调用函数，**Flow** 上游负责提供数据，下游也就是 **ViewModel** 获取到数据使用 **LiveData** 进行存储，**View** 层订阅 **LiveData**，实现数据驱动视图
 * 三者的依赖都是单向依赖，**View** -> **ViewModel** -> **Repository**  
 
@@ -96,14 +96,12 @@ android {
 * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 * [ViewBinding](https://developer.android.com/topic/libraries/view-binding)
 * [Hilt](https://developer.android.com/jetpack/androidx/releases/hilt)
-* [Android KTX](https://developer.android.com/kotlin/ktx)
 * [OkHttp](https://github.com/square/okhttp)：网络请求
 * [Retrofit](https://github.com/square/retrofit)：网络请求
 * [MMKV](https://github.com/Tencent/MMKV)：腾讯基于 **mmap** 内存映射的 **key-value** 本地存储组件
 * [Coil](https://github.com/coil-kt/coil)：一个 Android 图片加载库，通过 Kotlin 协程的方式加载图片
 * [ARoute](https://github.com/alibaba/ARouter)：阿里用于帮助 **Android App** 进行组件化改造的框架 —— 支持模块间的路由、通信、解耦
 * [BaseRecyclerViewAdapterHelper](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)：一个强大并且灵活的 **RecyclerViewAdapter**
-* [StatusBarUtil](https://github.com/laobie/StatusBarUtil)：状态栏
 * [EventBus](https://github.com/greenrobot/EventBus)：适用于 **Android** 和 **Java** 的发布/订阅事件总线
 * [Bugly](https://bugly.qq.com/v2/index)：腾讯异常上报及热更新(只集成了异常上报)
 * [PermissionX](https://github.com/guolindev/PermissionX)：郭霖权限请求框架
