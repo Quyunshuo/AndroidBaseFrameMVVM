@@ -6,7 +6,7 @@
 
 ## Demo
 
-&emsp;&emsp;demo是在另一个demo分支，但是目前的demo分支的代码是以前那一版的demo，目前版本的demo还没有来得及编写，敬请期待吧。
+​		以鸿洋大神的玩安卓开放Api做的一款极简风格的玩安卓，仓库地址：[WanAndroidMVVM](https://github.com/Quyunshuo/WanAndroidMVVM)，该项目正在开发中，由于工作较忙需要一段时间才能完成。如果想看旧版本的demo，可以直接打开demo分支看。
 
 ## 框架图示
 
