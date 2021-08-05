@@ -45,18 +45,13 @@ class LoadModuleProxy : ApplicationLifecycle {
     }
 
     /**
-     * 需要立即进行初始化的放在这里进行并行初始化
-     * 需要必须在主线程初始化的放在[InitDepend.mainThreadDepends],反之放在[InitDepend.workerThreadDepends]
-     * @return InitDepend 初始化方法集合
+     * 主线程前台初始化
+     * @return MutableList<() -> String> 初始化方法集合
      */
-    override fun initByFrontDesk(): InitDepend {
-        val mainThreadDepends: MutableList<() -> String> = mutableListOf()
-        val workerThreadDepends: MutableList<() -> String> = mutableListOf()
-        mLoader.forEach {
-            mainThreadDepends.addAll(it.initByFrontDesk().mainThreadDepends)
-            workerThreadDepends.addAll(it.initByFrontDesk().workerThreadDepends)
-        }
-        return InitDepend(mainThreadDepends, workerThreadDepends)
+    override fun initByFrontDesk(): MutableList<() -> String> {
+        val list: MutableList<() -> String> = mutableListOf()
+        mLoader.forEach { list.addAll(it.initByFrontDesk()) }
+        return list
     }
 
     /**
