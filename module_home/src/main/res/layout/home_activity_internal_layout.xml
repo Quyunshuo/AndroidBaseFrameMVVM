@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
+        app:layout_constraintBottom_toTopOf="@id/bottomAction"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/bottomAction"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/removeFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:shadowColor="#A82424"
+            android:text="删除当前Fragment"
+            android:textAllCaps="false"
+            android:translationZ="@dimen/dp_10" />
+
+        <Button
+            android:id="@+id/addFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:shadowColor="#000"
+            android:text="添加一个新的Fragment"
+            android:textAllCaps="false"
+            android:translationZ="@dimen/dp_10" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

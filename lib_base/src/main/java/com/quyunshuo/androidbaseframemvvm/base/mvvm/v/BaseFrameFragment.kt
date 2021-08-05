@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.alibaba.android.arouter.launcher.ARouter
 import com.quyunshuo.androidbaseframemvvm.base.mvvm.vm.BaseViewModel
 import com.quyunshuo.androidbaseframemvvm.base.utils.BindingReflex
 import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusRegister
 import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusUtils
-import com.quyunshuo.androidbaseframemvvm.base.utils.ViewRecreateHelper
+import com.quyunshuo.androidbaseframemvvm.base.utils.status.ViewStatusHelper
+import com.quyunshuo.androidbaseframemvvm.base.utils.status.imp.BaseFrameViewStatusHelperImp
 
 /**
  * Fragment基类
@@ -19,7 +19,7 @@ import com.quyunshuo.androidbaseframemvvm.base.utils.ViewRecreateHelper
  * @author Qu Yunshuo
  * @since 8/27/20
  */
-abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment(), FrameView<VB> {
+abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFrameStatusFragment(), FrameView<VB> {
 
     protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
         BindingReflex.reflexViewBinding(javaClass, layoutInflater)
@@ -28,9 +28,10 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : Fragmen
     protected abstract val mViewModel: VM
 
     /**
-     * fragment状态保存工具类
+     * 基础UI状态管理工具
      */
-    private var mStatusHelper: FragmentStatusHelper? = null
+    private lateinit var mBaseStatusHelper: BaseFrameViewStatusHelperImp
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,8 +43,6 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : Fragmen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //处理恢复
-        mStatusHelper?.onRestoreInstanceStatus(savedInstanceState)
         // ARouter 依赖注入
         ARouter.getInstance().inject(this)
         // 注册EventBus
@@ -54,27 +53,12 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : Fragmen
         initRequestData()
     }
 
-    override fun isRecreate(): Boolean = mStatusHelper?.isRecreate ?: false
+    override fun isRecreate(): Boolean = mBaseStatusHelper.isRecreate
 
-    /**
-     * 页面可能重建的时候回执行此方法，进行当前页面状态保存
-     */
-    override fun onSaveInstanceState(outState: Bundle) {
-        if (mStatusHelper == null) {
-            //仅当触发重建需要保存状态时创建对象
-            mStatusHelper = FragmentStatusHelper(outState)
-        } else {
-            mStatusHelper?.onSaveInstanceState(outState)
-        }
-        super.onSaveInstanceState(outState)
+    override fun onRegisterStatusHelper(): ViewStatusHelper? {
+        mBaseStatusHelper = BaseFrameViewStatusHelperImp(super.onRegisterStatusHelper())
+        return mBaseStatusHelper
     }
-
-    /**
-     * - fragment状态保存帮助类；
-     * - 暂时没有其他需要保存的--空继承
-     */
-    private class FragmentStatusHelper(savedInstanceState: Bundle? = null) :
-        ViewRecreateHelper(savedInstanceState)
 
     override fun onDestroy() {
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.unRegister(

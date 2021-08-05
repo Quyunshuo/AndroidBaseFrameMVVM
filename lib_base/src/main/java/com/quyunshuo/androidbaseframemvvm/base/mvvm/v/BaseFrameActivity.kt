@@ -1,13 +1,17 @@
 package com.quyunshuo.androidbaseframemvvm.base.mvvm.v
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.alibaba.android.arouter.launcher.ARouter
 import com.quyunshuo.androidbaseframemvvm.base.mvvm.vm.BaseViewModel
-import com.quyunshuo.androidbaseframemvvm.base.utils.*
+import com.quyunshuo.androidbaseframemvvm.base.utils.BindingReflex
+import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusRegister
+import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusUtils
 import com.quyunshuo.androidbaseframemvvm.base.utils.network.AutoRegisterNetListener
 import com.quyunshuo.androidbaseframemvvm.base.utils.network.NetworkStateChangeListener
+import com.quyunshuo.androidbaseframemvvm.base.utils.status.ViewStatusHelper
+import com.quyunshuo.androidbaseframemvvm.base.utils.status.imp.BaseFrameViewStatusHelperImp
+import com.quyunshuo.androidbaseframemvvm.base.utils.toast
 
 /**
  * Activity基类
@@ -15,7 +19,7 @@ import com.quyunshuo.androidbaseframemvvm.base.utils.network.NetworkStateChangeL
  * @author Qu Yunshuo
  * @since 8/27/20
  */
-abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatActivity(),
+abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : BaseFrameStatusActivity(),
     FrameView<VB>, NetworkStateChangeListener {
 
     protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
@@ -25,15 +29,13 @@ abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : AppComp
     protected abstract val mViewModel: VM
 
     /**
-     * activity页面重建帮助类
+     * 基础UI状态管理工具 保存了是否重建的状态信息
      */
-    private var mStatusHelper: ActivityRecreateHelper? = null
+    private lateinit var mStatusHelper: BaseFrameViewStatusHelperImp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mBinding.root)
-        //处理保存的装填
-        mStatusHelper?.onRestoreInstanceStatus(savedInstanceState)
         // ARouter 依赖注入
         ARouter.getInstance().inject(this)
         // 注册EventBus
@@ -77,23 +79,12 @@ abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : AppComp
         toast(if (isConnected) "网络已连接" else "网络已断开")
     }
 
-    override fun isRecreate(): Boolean = mStatusHelper?.isRecreate ?: false
+    override fun isRecreate(): Boolean = mStatusHelper.isRecreate
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        if (mStatusHelper == null) {
-            //仅当触发重建需要保存状态时创建对象
-            mStatusHelper = ActivityRecreateHelper(outState)
-        } else {
-            mStatusHelper?.onSaveInstanceState(outState)
-        }
-        super.onSaveInstanceState(outState)
+    override fun onRegisterStatusHelper(): ViewStatusHelper? {
+        mStatusHelper = BaseFrameViewStatusHelperImp(super.onRegisterStatusHelper())
+        return mStatusHelper
     }
-
-    /**
-     * - activity 重建帮助工具类
-     */
-    private class ActivityRecreateHelper(savedInstanceState: Bundle? = null) :
-        ViewRecreateHelper(savedInstanceState)
 
     override fun onDestroy() {
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.unRegister(
