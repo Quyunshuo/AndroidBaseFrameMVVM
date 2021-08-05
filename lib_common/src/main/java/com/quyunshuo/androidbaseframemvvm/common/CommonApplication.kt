@@ -8,7 +8,6 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.google.auto.service.AutoService
 import com.quyunshuo.androidbaseframemvvm.base.app.ApplicationLifecycle
 import com.quyunshuo.androidbaseframemvvm.base.BaseApplication
-import com.quyunshuo.androidbaseframemvvm.base.app.InitDepend
 import com.quyunshuo.androidbaseframemvvm.base.constant.VersionStatus
 import com.quyunshuo.androidbaseframemvvm.base.utils.ProcessUtils
 import com.quyunshuo.androidbaseframemvvm.base.utils.SpUtils
@@ -54,21 +53,19 @@ class CommonApplication : ApplicationLifecycle {
     override fun onTerminate(application: Application) {}
 
     /**
-     * 需要立即进行初始化的放在这里进行并行初始化
-     * 需要必须在主线程初始化的放在[InitDepend.mainThreadDepends],反之放在[InitDepend.workerThreadDepends]
-     * @return InitDepend 初始化方法集合
+     * 主线程前台初始化
+     * @return MutableList<() -> String> 初始化方法集合
      */
-    override fun initByFrontDesk(): InitDepend {
-        val worker = mutableListOf<() -> String>()
-        val main = mutableListOf<() -> String>()
+    override fun initByFrontDesk(): MutableList<() -> String> {
+        val list = mutableListOf<() -> String>()
         // 以下只需要在主进程当中初始化 按需要调整
         if (ProcessUtils.isMainProcess(BaseApplication.context)) {
-            worker.add { initMMKV() }
-            worker.add { initARouter() }
-            main.add { initNetworkStateClient() }
+            list.add { initMMKV() }
+            list.add { initARouter() }
+            list.add { initNetworkStateClient() }
         }
-        worker.add { initTencentBugly() }
-        return InitDepend(main, worker)
+        list.add { initTencentBugly() }
+        return list
     }
 
     /**

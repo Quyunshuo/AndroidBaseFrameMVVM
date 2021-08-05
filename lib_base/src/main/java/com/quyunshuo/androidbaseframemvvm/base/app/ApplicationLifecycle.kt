@@ -30,11 +30,10 @@ interface ApplicationLifecycle {
     fun onTerminate(application: Application)
 
     /**
-     * 需要立即进行初始化的放在这里进行并行初始化
-     * 需要必须在主线程初始化的放在[InitDepend.mainThreadDepends],反之放在[InitDepend.workerThreadDepends]
-     * @return InitDepend 初始化方法集合
+     * 主线程前台初始化
+     * @return MutableList<() -> String> 初始化方法集合
      */
-    fun initByFrontDesk(): InitDepend
+    fun initByFrontDesk(): MutableList<() -> String>
 
     /**
      * 不需要立即初始化的放在这里进行后台初始化
