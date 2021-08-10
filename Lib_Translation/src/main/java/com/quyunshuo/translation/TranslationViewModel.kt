@@ -34,20 +34,20 @@ class TranslationViewModel : BaseViewModel<TranslationRepository>() {
             mRepository.getTranslation(original)
                 .onStart {
                     // 请求开始之前的操作
-                    isLoading.value = true
+                    isLoading.postValue(true)
                 }
                 .catch {
                     // 捕获并处理上游抛出的异常
-                    _translationLiveData.value = "error"
-                    isLoading.value = false
+                    _translationLiveData.postValue("error") 
+                    isLoading.postValue(false) 
                 }
                 .onCompletion {
                     // 已完成
-                    isLoading.value = false
+                    isLoading.postValue(false) 
                 }
                 .collect {
                     // 获取结果
-                    _translationLiveData.value = it
+                    _translationLiveData.postValue(it)
                 }
         }
     }
