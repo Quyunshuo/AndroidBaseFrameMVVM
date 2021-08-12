@@ -95,19 +95,13 @@ object ActivityStackManager {
      * 返回到指定 Activity
      */
     fun backToSpecifyActivity(activityClass: Class<*>) {
-        val activityList = activityStack.toList()
-        // 获取栈最上面的Activity
-        val lastElement = activityStack.lastElement()
+        val activityList = activityStack.toList().reversed()
         activityList.forEach {
-            // 如果栈内存在该Activity就进行下一步操作
             if (it.javaClass == activityClass) {
-                // 判断最上面的Activity是不是指定的Activity 不是就finish
-                if (lastElement.javaClass == activityClass) {
-                    return
-                } else {
-                    activityStack.remove(lastElement)
-                    lastElement.finish()
-                }
+                return
+            } else {
+                activityStack.pop()
+                it.finish()
             }
         }
     }
