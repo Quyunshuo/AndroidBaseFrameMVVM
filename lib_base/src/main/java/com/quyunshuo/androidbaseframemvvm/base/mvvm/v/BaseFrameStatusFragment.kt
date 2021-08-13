@@ -38,5 +38,4 @@ open class BaseFrameStatusFragment : Fragment() {
     protected open fun onRegisterStatusHelper(): ViewStatusHelper? {
         return null
     }
-
 }

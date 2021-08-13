@@ -19,11 +19,15 @@ import com.quyunshuo.androidbaseframemvvm.base.utils.status.imp.BaseFrameViewSta
  * @author Qu Yunshuo
  * @since 8/27/20
  */
-abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFrameStatusFragment(), FrameView<VB> {
+abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFrameStatusFragment(),
+    FrameView<VB> {
 
-    protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
-        BindingReflex.reflexViewBinding(javaClass, layoutInflater)
-    }
+    /**
+     * 私有的 ViewBinding 此写法来自 Google Android 官方
+     */
+    private var _binding: VB? = null
+
+    protected val mBinding get() = _binding!!
 
     protected abstract val mViewModel: VM
 
@@ -32,13 +36,13 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFra
      */
     private lateinit var mBaseStatusHelper: BaseFrameViewStatusHelperImp
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return mBinding.root
+        _binding = BindingReflex.reflexViewBinding(javaClass, layoutInflater)
+        return _binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +52,7 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFra
         // 注册EventBus
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.register(this)
 
-        mBinding.initView()
+        _binding?.initView()
         initObserve()
         initRequestData()
     }
@@ -58,6 +62,11 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFra
     override fun onRegisterStatusHelper(): ViewStatusHelper? {
         mBaseStatusHelper = BaseFrameViewStatusHelperImp(super.onRegisterStatusHelper())
         return mBaseStatusHelper
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onDestroy() {

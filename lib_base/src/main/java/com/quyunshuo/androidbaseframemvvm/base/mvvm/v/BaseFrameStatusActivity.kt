@@ -37,5 +37,4 @@ open class BaseFrameStatusActivity : AppCompatActivity() {
     protected open fun onRegisterStatusHelper(): ViewStatusHelper? {
         return null
     }
-
 }
