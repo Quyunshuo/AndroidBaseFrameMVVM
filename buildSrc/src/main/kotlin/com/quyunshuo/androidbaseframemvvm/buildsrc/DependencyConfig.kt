@@ -50,7 +50,6 @@ object DependencyConfig {
         const val ARoute = "1.5.1"                          // 阿里路由
         const val ARouteCompiler = "1.5.1"                  // 阿里路由 APT
         const val RecyclerViewAdapter = "3.0.4"             // RecyclerViewAdapter
-        const val StatusBar = "1.5.1"                       // 状态栏
         const val EventBus = "3.2.0"                        // 事件总线
         const val PermissionX = "1.4.0"                     // 权限申请
         const val LeakCanary = "2.7"                        // 检测内存泄漏
@@ -146,7 +145,6 @@ object DependencyConfig {
         const val ARouteCompiler = "com.alibaba:arouter-compiler:${Version.ARouteCompiler}"
         const val RecyclerViewAdapter =
             "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Version.RecyclerViewAdapter}"
-        const val StatusBar = "com.jaeger.statusbarutil:library:${Version.StatusBar}"
         const val EventBus = "org.greenrobot:eventbus:${Version.EventBus}"
         const val EventBusAPT = "org.greenrobot:eventbus-annotation-processor:${Version.EventBus}"
         const val PermissionX = "com.permissionx.guolindev:permissionx:${Version.PermissionX}"
