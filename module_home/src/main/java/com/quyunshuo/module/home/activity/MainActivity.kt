@@ -1,8 +1,8 @@
 package com.quyunshuo.module.home.activity
 
-import android.content.Intent
 import android.graphics.Color
 import androidx.activity.viewModels
+import com.quyunshuo.androidbaseframemvvm.base.ktx.observeLiveData
 import com.quyunshuo.androidbaseframemvvm.common.ui.BaseActivity
 import com.quyunshuo.module.home.databinding.HomeActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,18 +21,15 @@ class MainActivity : BaseActivity<HomeActivityMainBinding, HomeViewModel>() {
      */
     override val mViewModel by viewModels<HomeViewModel>()
 
-    override fun HomeActivityMainBinding.initView() {
-        goToNextBtn.setOnClickListener {
-            startActivity(Intent(this@MainActivity, InternalPagerActivity::class.java))
-        }
-    }
+    override fun HomeActivityMainBinding.initView() {}
 
     override fun initObserve() {
-        // 订阅数据
-        mViewModel.data.observe(this, {
-            mBinding.vTvHello.text = it
-            mBinding.vTvHello.setTextColor(Color.BLUE)
-        })
+        observeLiveData(mViewModel.data, ::processData)
+    }
+
+    private fun processData(data: String) {
+        mBinding.vTvHello.text = data
+        mBinding.vTvHello.setTextColor(Color.BLUE)
     }
 
     override fun initRequestData() {

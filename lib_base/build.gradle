@@ -43,7 +43,6 @@ dependencies {
     api DependencyConfig.GitHub.AutoSize
     api DependencyConfig.GitHub.ARoute
     api DependencyConfig.GitHub.RecyclerViewAdapter
-    api DependencyConfig.GitHub.StatusBar
     api DependencyConfig.GitHub.EventBus
     api DependencyConfig.GitHub.PermissionX
     api DependencyConfig.GitHub.AutoService

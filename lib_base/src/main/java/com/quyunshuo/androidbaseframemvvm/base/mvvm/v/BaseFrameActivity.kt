@@ -1,18 +1,17 @@
 package com.quyunshuo.androidbaseframemvvm.base.mvvm.v
 
+import android.content.res.Resources
 import android.os.Bundle
+import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.alibaba.android.arouter.launcher.ARouter
 import com.quyunshuo.androidbaseframemvvm.base.mvvm.vm.BaseViewModel
-import com.quyunshuo.androidbaseframemvvm.base.utils.BindingReflex
-import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusRegister
-import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusUtils
+import com.quyunshuo.androidbaseframemvvm.base.utils.*
 import com.quyunshuo.androidbaseframemvvm.base.utils.network.AutoRegisterNetListener
 import com.quyunshuo.androidbaseframemvvm.base.utils.network.NetworkStateChangeListener
 import com.quyunshuo.androidbaseframemvvm.base.utils.network.NetworkTypeEnum
-import com.quyunshuo.androidbaseframemvvm.base.utils.status.ViewStatusHelper
-import com.quyunshuo.androidbaseframemvvm.base.utils.status.imp.BaseFrameViewStatusHelperImp
-import com.quyunshuo.androidbaseframemvvm.base.utils.toast
+import me.jessyan.autosize.AutoSizeCompat
 
 /**
  * Activity基类
@@ -20,7 +19,7 @@ import com.quyunshuo.androidbaseframemvvm.base.utils.toast
  * @author Qu Yunshuo
  * @since 8/27/20
  */
-abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : BaseFrameStatusActivity(),
+abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatActivity(),
     FrameView<VB>, NetworkStateChangeListener {
 
     protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
@@ -28,11 +27,6 @@ abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : BaseFra
     }
 
     protected abstract val mViewModel: VM
-
-    /**
-     * 基础UI状态管理工具 保存了是否重建的状态信息
-     */
-    private lateinit var mStatusHelper: BaseFrameViewStatusHelperImp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,17 +74,20 @@ abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : BaseFra
         toast(if (isConnected) "网络已连接" else "网络已断开")
     }
 
-    override fun isRecreate(): Boolean = mStatusHelper.isRecreate
-
-    override fun onRegisterStatusHelper(): ViewStatusHelper? {
-        mStatusHelper = BaseFrameViewStatusHelperImp(super.onRegisterStatusHelper())
-        return mStatusHelper
-    }
-
     override fun onDestroy() {
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.unRegister(
             this
         )
         super.onDestroy()
+    }
+
+    override fun getResources(): Resources {
+        // 主要是为了解决 AndroidAutoSize 在横屏切换时导致适配失效的问题
+        // 但是 AutoSizeCompat.autoConvertDensity() 对线程做了判断 导致Coil等图片加载框架在子线程访问的时候会异常
+        // 所以在这里加了线程的判断 如果是非主线程 就取消单独的适配
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            AutoSizeCompat.autoConvertDensityOfGlobal((super.getResources()))
+        }
+        return super.getResources()
     }
 }

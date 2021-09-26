@@ -2,13 +2,11 @@ package com.quyunshuo.module.home.activity
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import com.quyunshuo.androidbaseframemvvm.base.ktx.launchIO
 import com.quyunshuo.androidbaseframemvvm.base.mvvm.vm.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -28,7 +26,7 @@ class HomeViewModel @Inject constructor(private val mRepository: HomeRepository)
      * 模拟获取数据
      */
     fun getData() {
-        viewModelScope.launch(Dispatchers.IO) {
+        launchIO {
             mRepository.getData()
                 .catch { Log.d("qqq", "getData: $it") }
                 .collect { data.postValue(it) }
