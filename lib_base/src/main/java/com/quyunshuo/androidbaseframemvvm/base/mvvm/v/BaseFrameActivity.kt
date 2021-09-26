@@ -9,6 +9,7 @@ import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusRegister
 import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusUtils
 import com.quyunshuo.androidbaseframemvvm.base.utils.network.AutoRegisterNetListener
 import com.quyunshuo.androidbaseframemvvm.base.utils.network.NetworkStateChangeListener
+import com.quyunshuo.androidbaseframemvvm.base.utils.network.NetworkTypeEnum
 import com.quyunshuo.androidbaseframemvvm.base.utils.status.ViewStatusHelper
 import com.quyunshuo.androidbaseframemvvm.base.utils.status.imp.BaseFrameViewStatusHelperImp
 import com.quyunshuo.androidbaseframemvvm.base.utils.toast
@@ -68,7 +69,7 @@ abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : BaseFra
      * @param type Int 网络类型
      * @return Unit
      */
-    override fun networkTypeChange(type: Int) {}
+    override fun networkTypeChange(type: NetworkTypeEnum) {}
 
     /**
      * 网络连接状态更改回调

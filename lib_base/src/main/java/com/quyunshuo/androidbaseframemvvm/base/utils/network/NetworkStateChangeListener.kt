@@ -10,10 +10,10 @@ interface NetworkStateChangeListener {
 
     /**
      * 网络类型更改回调
-     * @param type Int 网络类型
+     * @param type NetworkTypeEnum 网络类型
      * @return Unit
      */
-    fun networkTypeChange(type: Int)
+    fun networkTypeChange(type: NetworkTypeEnum)
 
     /**
      * 网络连接状态更改回调

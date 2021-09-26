@@ -47,10 +47,12 @@ object NetworkStateClient {
     }
 
     /**
-     * 获取网络类型 其他类型的网络归为了WIFI，如果需要细分，可以对[NetworkCallbackImpl]进行追加分类
-     * @return Int WIFI:[NetworkCapabilities.TRANSPORT_WIFI]、移动网络:[NetworkCapabilities.TRANSPORT_CELLULAR]
+     * 获取网络类型
+     * 当前网络类型是缓存的最近一次连接的网络类型，当无网络连接时其实拿到的是上一次的
+     * 所以网络是否连接应该作为第一判断，确定网络是连接状态时再获取当前的网络类型，因为网络类型中没有设定无网
+     * @return NetworkTypeEnum 参照[NetworkTypeEnum]
      */
-    fun getNetworkType(): Int = mNetworkCallback.currentNetworkType
+    fun getNetworkType(): NetworkTypeEnum = mNetworkCallback.currentNetworkType
 
     /**
      * 网络是否连接
