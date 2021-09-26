@@ -1,37 +1,38 @@
 package com.quyunshuo.androidbaseframemvvm.common.helper
 
 /**
- * 请求响应异常枚举的抽象
+ * 请求响应code枚举抽象
  *
  * @author Qu Yunshuo
  * @since 2021/7/9 2:56 下午
  */
-interface ResponseExceptionEnumCode {
+interface IResponseCode {
 
     /**
-     * 获取该异常枚举的code码
+     * 获取该枚举的code码
      * @return Int
      */
     fun getCode(): Int
 
     /**
-     * 获取该异常枚举的描述
+     * 获取该枚举的描述
      * @return String
      */
     fun getMessage(): String
 }
 
 /**
- * 请求响应异常的类型
+ * 请求响应code的枚举
  *
  * @author Qu Yunshuo
  * @since 2021/7/9 2:55 下午
  */
-enum class ResponseExceptionEnum : ResponseExceptionEnumCode {
+enum class ResponseCodeEnum : IResponseCode {
 
-    INTERNAL_SERVER_ERROR {
-        override fun getCode() = 500
-        override fun getMessage() = "服务器内部错误"
+    // 通用异常
+    ERROR {
+        override fun getCode() = 100
+        override fun getMessage() = "处理失败"
     },
 
     // 成功

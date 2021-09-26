@@ -1,7 +1,6 @@
 package com.quyunshuo.androidbaseframemvvm.common.helper
 
 import com.quyunshuo.androidbaseframemvvm.base.utils.toast
-import com.quyunshuo.androidbaseframemvvm.common.helper.ResponseExceptionEnum as ExceptionType
 
 /**
  * 响应code异常统一处理
@@ -26,10 +25,10 @@ suspend fun responseCodeExceptionHandler(
 ) {
     // 进行异常的处理
     when (code) {
-        ExceptionType.INTERNAL_SERVER_ERROR.getCode() -> {
-            toast(ExceptionType.INTERNAL_SERVER_ERROR.getMessage())
+        ResponseCodeEnum.ERROR.getCode() -> {
+            toast(ResponseCodeEnum.ERROR.getMessage())
             throw ResponseEmptyException()
         }
-        ExceptionType.SUCCESS.getCode() -> successBlock.invoke()
+        ResponseCodeEnum.SUCCESS.getCode() -> successBlock.invoke()
     }
 }
