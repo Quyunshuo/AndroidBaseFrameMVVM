@@ -26,5 +26,5 @@ inline fun <T> LifecycleOwner.observeLiveData(
     liveData: LiveData<T>,
     crossinline action: (t: T) -> Unit
 ) {
-    liveData.observe(this, { it?.let { t -> action(t) } })
+    liveData.observe(this) { it?.let { t -> action(t) } }
 }
