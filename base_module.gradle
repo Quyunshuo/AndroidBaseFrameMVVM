@@ -96,6 +96,5 @@ dependencies {
     kapt DependencyConfig.GitHub.EventBusAPT
     kapt DependencyConfig.GitHub.AutoServiceAnnotations
     kapt DependencyConfig.JetPack.HiltApt
-    kapt DependencyConfig.JetPack.HiltAndroidx
     kapt DependencyConfig.JetPack.LifecycleCompilerAPT
 }

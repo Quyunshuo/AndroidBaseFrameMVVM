@@ -82,6 +82,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.quyunshuo.androidbaseframemvvm'
 }
 
 dependencies {
@@ -97,5 +98,4 @@ dependencies {
 
     kapt DependencyConfig.GitHub.AutoServiceAnnotations
     kapt DependencyConfig.JetPack.HiltApt
-    kapt DependencyConfig.JetPack.HiltAndroidx
 }

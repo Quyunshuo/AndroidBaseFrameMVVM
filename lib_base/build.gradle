@@ -14,6 +14,7 @@ android {
     }
 
     resourcePrefix "base_"
+    namespace 'com.quyunshuo.androidbaseframemvvm.base'
 }
 
 dependencies {
@@ -63,7 +64,6 @@ dependencies {
     kapt DependencyConfig.GitHub.EventBusAPT
     kapt DependencyConfig.GitHub.AutoServiceAnnotations
     kapt DependencyConfig.JetPack.HiltApt
-    kapt DependencyConfig.JetPack.HiltAndroidx
     kapt DependencyConfig.JetPack.LifecycleCompilerAPT
 
     debugApi DependencyConfig.GitHub.LeakCanary

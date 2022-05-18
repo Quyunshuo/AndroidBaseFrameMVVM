@@ -36,8 +36,7 @@ object DependencyConfig {
 
         // JetPack---------------------------------------------------------------
         const val Lifecycle = "2.3.1"                       // Lifecycle相关（ViewModel & LiveData & Lifecycle）
-        const val Hilt = "2.35.1"                           // DI框架-Hilt
-        const val HiltAndroidx = "1.0.0"
+        const val Hilt = "2.38.1"                           // DI框架-Hilt
 
         // GitHub----------------------------------------------------------------
         const val OkHttp = "4.9.0"                          // OkHttp
@@ -108,7 +107,6 @@ object DependencyConfig {
             "androidx.lifecycle:lifecycle-compiler:${Version.Lifecycle}"
         const val HiltCore = "com.google.dagger:hilt-android:${Version.Hilt}"
         const val HiltApt = "com.google.dagger:hilt-compiler:${Version.Hilt}"
-        const val HiltAndroidx = "androidx.hilt:hilt-compiler:${Version.HiltAndroidx}"
     }
 
     /**

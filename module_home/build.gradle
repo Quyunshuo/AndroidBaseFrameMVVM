@@ -6,4 +6,5 @@ apply from: '../base_module.gradle'
 
 android {
     resourcePrefix "home_"
+    namespace 'com.quyunshuo.module.home'
 }
