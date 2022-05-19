@@ -17,13 +17,13 @@ object DependencyConfig {
     object Version {
 
         // AndroidX--------------------------------------------------------------
-        const val AppCompat = "1.2.0"
-        const val CoreKtx = "1.3.1"
-        const val ConstraintLayout = "2.0.1"                // 约束布局
+        const val AppCompat = "1.3.1"
+        const val CoreKtx = "1.7.0"
+        const val ConstraintLayout = "2.1.3"                // 约束布局
         const val TestExtJunit = "1.1.2"
         const val TestEspresso = "3.3.0"
-        const val ActivityKtx = "1.1.0"
-        const val FragmentKtx = "1.2.5"
+        const val ActivityKtx = "1.4.0"
+        const val FragmentKtx = "1.4.1"
         const val MultiDex = "2.0.1"
 
         // Android---------------------------------------------------------------
@@ -31,11 +31,11 @@ object DependencyConfig {
         const val Material = "1.2.0"                        // 材料设计UI套件
 
         // Kotlin----------------------------------------------------------------
-        const val Kotlin = "1.5.10"
-        const val Coroutines = "1.5.0"                      // 协程
+        const val Kotlin = "1.6.21"
+        const val Coroutines = "1.6.1"                      // 协程
 
         // JetPack---------------------------------------------------------------
-        const val Lifecycle = "2.3.1"                       // Lifecycle相关（ViewModel & LiveData & Lifecycle）
+        const val Lifecycle = "2.4.1"                       // Lifecycle相关（ViewModel & LiveData & Lifecycle）
         const val Hilt = "2.38.1"                           // DI框架-Hilt
 
         // GitHub----------------------------------------------------------------

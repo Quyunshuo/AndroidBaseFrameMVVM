@@ -12,7 +12,6 @@ apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion ProjectBuildConfig.compileSdkVersion
-    buildToolsVersion ProjectBuildConfig.buildToolsVersion
 
     defaultConfig {
         applicationId ProjectBuildConfig.applicationId
