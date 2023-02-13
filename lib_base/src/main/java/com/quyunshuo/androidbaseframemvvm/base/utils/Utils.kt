@@ -1,14 +1,11 @@
 package com.quyunshuo.androidbaseframemvvm.base.utils
 
-import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import com.alibaba.android.arouter.launcher.ARouter
-import com.quyunshuo.androidbaseframemvvm.base.BaseApplication
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
@@ -63,31 +60,4 @@ fun toast(msg: String, duration: Int = Toast.LENGTH_SHORT) {
  */
 fun toast(msgId: Int, duration: Int = Toast.LENGTH_SHORT) {
     ToastUtils.showToast(msgId, duration)
-}
-/**************************************************************************************************/
-/**
- * 获取App版本号
- * @return Long App版本号
- */
-fun getVersionCode(): Long {
-    val packageInfo = BaseApplication.context
-        .packageManager
-        .getPackageInfo(BaseApplication.context.packageName, 0)
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-        packageInfo.longVersionCode
-    } else {
-        packageInfo.versionCode.toLong()
-    }
-}
-
-/**************************************************************************************************/
-/**
- * 获取App版本名
- * @return String App版本名
- */
-fun getVersionName(): String {
-    return BaseApplication.context
-        .packageManager
-        .getPackageInfo(BaseApplication.context.packageName, 0)
-        .versionName
 }
