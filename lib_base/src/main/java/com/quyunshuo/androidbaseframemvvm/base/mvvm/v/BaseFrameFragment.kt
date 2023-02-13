@@ -43,6 +43,7 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : Fragmen
         super.onViewCreated(view, savedInstanceState)
         // ARouter 依赖注入
         ARouter.getInstance().inject(this)
+        // TODO: EventBus 注册与解除注册逻辑优化
         // 注册EventBus
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.register(this)
 
@@ -57,6 +58,7 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : Fragmen
     }
 
     override fun onDestroy() {
+        // TODO: EventBus 注册与解除注册逻辑优化
         if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.unRegister(
             this
         )

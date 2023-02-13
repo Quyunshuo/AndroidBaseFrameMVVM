@@ -1,5 +1,5 @@
 package com.quyunshuo.androidbaseframemvvm.base.utils
-
+// TODO: 注解重命名
 /**
  * @Author: QuYunShuo
  * @Time: 2020/8/29
