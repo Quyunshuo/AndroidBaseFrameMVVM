@@ -7,6 +7,23 @@ import kotlinx.coroutines.*
 /**
  * 开启一个线程调度模式为[Dispatchers.IO]的协程 有默认的异常处理器
  *
+ * **sample:**
+ * ```
+ * class SampleViewModel : ViewModel() {
+ *
+ *     fun sample() {
+ *         launchIO {
+ *             // 协程体
+ *         }
+ *         launchIO(exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
+ *             // exception handling
+ *         }) {
+ *             // 协程体
+ *         }
+ *     }
+ * }
+ * ```
+ *
  * @receiver ViewModel
  *
  * @param exceptionHandler CoroutineExceptionHandler 异常处理器
@@ -14,7 +31,7 @@ import kotlinx.coroutines.*
  * @return Job
  */
 fun ViewModel.launchIO(
-    exceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
+    exceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         throwable.printStackTrace()
     },
     block: suspend CoroutineScope.() -> Unit
@@ -23,6 +40,23 @@ fun ViewModel.launchIO(
 /**
  * 开启一个线程调度模式为[Dispatchers.Default]的协程 有默认的异常处理器
  *
+ * **sample:**
+ * ```
+ * class SampleViewModel : ViewModel() {
+ *
+ *     fun sample() {
+ *         launchDefault {
+ *             // 协程体
+ *         }
+ *         launchDefault(exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
+ *             // exception handling
+ *         }) {
+ *             // 协程体
+ *         }
+ *     }
+ * }
+ * ```
+ *
  * @receiver ViewModel
  *
  * @param exceptionHandler CoroutineExceptionHandler 异常处理器
@@ -30,7 +64,7 @@ fun ViewModel.launchIO(
  * @return Job
  */
 fun ViewModel.launchDefault(
-    exceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
+    exceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         throwable.printStackTrace()
     },
     block: suspend CoroutineScope.() -> Unit
@@ -39,6 +73,23 @@ fun ViewModel.launchDefault(
 /**
  * 开启一个线程调度模式为[Dispatchers.Main]的协程 有默认的异常处理器
  *
+ * **sample:**
+ * ```
+ * class SampleViewModel : ViewModel() {
+ *
+ *     fun sample() {
+ *         launchMain {
+ *             // 协程体
+ *         }
+ *         launchMain(exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
+ *             // exception handling
+ *         }) {
+ *             // 协程体
+ *         }
+ *     }
+ * }
+ * ```
+ *
  * @receiver ViewModel
  *
  * @param exceptionHandler CoroutineExceptionHandler 异常处理器
@@ -46,7 +97,7 @@ fun ViewModel.launchDefault(
  * @return Job
  */
 fun ViewModel.launchMain(
-    exceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
+    exceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         throwable.printStackTrace()
     },
     block: suspend CoroutineScope.() -> Unit
