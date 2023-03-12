@@ -28,14 +28,22 @@ abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : AppComp
 
     protected abstract val mViewModel: VM
 
+    /**
+     * 是否有 [RegisterEventBus] 注解，避免重复调用 [Class.isAnnotation]
+     */
+    private var mHaveRegisterEventBus = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mBinding.root)
         // ARouter 依赖注入
         ARouter.getInstance().inject(this)
-        // TODO: EventBus 注册与解除注册逻辑优化
-        // 注册EventBus
-        if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.register(this)
+
+        // 根据子类是否有 RegisterEventBus 注解決定是否进行注册 EventBus
+        if (javaClass.isAnnotationPresent(RegisterEventBus::class.java)) {
+            mHaveRegisterEventBus = true
+            EventBusUtils.register(this)
+        }
 
         setStatusBar()
         mBinding.initView()
@@ -76,10 +84,10 @@ abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : AppComp
     }
 
     override fun onDestroy() {
-        // TODO: EventBus 注册与解除注册逻辑优化
-        if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.unRegister(
-            this
-        )
+        // 根据子类是否有 RegisterEventBus 注解决定是否进行注册 EventBus
+        if (mHaveRegisterEventBus) {
+            EventBusUtils.unRegister(this)
+        }
         super.onDestroy()
     }
 

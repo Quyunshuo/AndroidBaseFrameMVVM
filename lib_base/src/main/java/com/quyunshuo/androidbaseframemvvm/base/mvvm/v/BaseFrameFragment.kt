@@ -9,7 +9,7 @@ import androidx.viewbinding.ViewBinding
 import com.alibaba.android.arouter.launcher.ARouter
 import com.quyunshuo.androidbaseframemvvm.base.mvvm.vm.BaseViewModel
 import com.quyunshuo.androidbaseframemvvm.base.utils.BindingReflex
-import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusRegister
+import com.quyunshuo.androidbaseframemvvm.base.utils.RegisterEventBus
 import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusUtils
 
 /**
@@ -30,6 +30,11 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : Fragmen
 
     protected abstract val mViewModel: VM
 
+    /**
+     * 是否有 [RegisterEventBus] 注解，避免重复调用 [Class.isAnnotation]
+     */
+    private var mHaveRegisterEventBus = false
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,10 +48,12 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : Fragmen
         super.onViewCreated(view, savedInstanceState)
         // ARouter 依赖注入
         ARouter.getInstance().inject(this)
-        // TODO: EventBus 注册与解除注册逻辑优化
-        // 注册EventBus
-        if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.register(this)
 
+        // 根据子类是否有 RegisterEventBus 注解決定是否进行注册 EventBus
+        if (javaClass.isAnnotationPresent(RegisterEventBus::class.java)) {
+            mHaveRegisterEventBus = true
+            EventBusUtils.register(this)
+        }
         _binding?.initView()
         initObserve()
         initRequestData()
@@ -58,10 +65,10 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : Fragmen
     }
 
     override fun onDestroy() {
-        // TODO: EventBus 注册与解除注册逻辑优化
-        if (javaClass.isAnnotationPresent(EventBusRegister::class.java)) EventBusUtils.unRegister(
-            this
-        )
+        // 根据子类是否有 RegisterEventBus 注解决定是否进行注册 EventBus
+        if (mHaveRegisterEventBus) {
+            EventBusUtils.unRegister(this)
+        }
         super.onDestroy()
     }
 }
