@@ -5,6 +5,7 @@ import android.animation.IntEvaluator
 import android.animation.ValueAnimator
 import android.view.View
 import android.view.ViewGroup
+import com.quyunshuo.androidbaseframemvvm.base.view.OnSingleClickListener
 
 /**
  * @Author: QuYunShuo
@@ -210,4 +211,16 @@ fun View.getViewId(): Int {
         id = View.generateViewId()
     }
     return id
+}
+
+/**
+ * 给 [View] 设置带有防抖效果的点击事件
+ *
+ * @receiver [View]
+ * @param delayTime Int 防抖间隔时间，单位是毫秒，默认值 500ms
+ * @param listener (v: View) -> Unit 具体的点击事件
+ * @see OnSingleClickListener
+ */
+fun View.setOnSingleClickListener(delayTime: Int = 500, listener: (v: View) -> Unit) {
+    setOnClickListener(OnSingleClickListener(delayTime, listener))
 }
