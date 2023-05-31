@@ -5,6 +5,7 @@ import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import com.quyunshuo.androidbaseframemvvm.base.utils.ActivityStackManager
+import com.quyunshuo.androidbaseframemvvm.base.utils.ForegroundBackgroundHelper
 
 /**
  * Activity生命周期监听
@@ -23,6 +24,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityStarted(activity: Activity) {
         Log.e(TAG, "${activity.javaClass.simpleName} --> onActivityStarted")
+        ForegroundBackgroundHelper.onActivityStarted()
     }
 
     override fun onActivityResumed(activity: Activity) {
@@ -35,6 +37,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityStopped(activity: Activity) {
         Log.e(TAG, "${activity.javaClass.simpleName} --> onActivityStopped")
+        ForegroundBackgroundHelper.onActivityStopped()
     }
 
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {

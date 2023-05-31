@@ -9,6 +9,7 @@ import com.google.auto.service.AutoService
 import com.quyunshuo.androidbaseframemvvm.base.app.ApplicationLifecycle
 import com.quyunshuo.androidbaseframemvvm.base.BaseApplication
 import com.quyunshuo.androidbaseframemvvm.base.constant.VersionStatus
+import com.quyunshuo.androidbaseframemvvm.base.utils.ForegroundBackgroundObserver
 import com.quyunshuo.androidbaseframemvvm.base.utils.ProcessUtils
 import com.quyunshuo.androidbaseframemvvm.base.utils.SpUtils
 import com.quyunshuo.androidbaseframemvvm.base.utils.network.NetworkStateClient
@@ -24,7 +25,7 @@ import com.tencent.smtt.sdk.QbSdk.PreInitCallback
  * @since 4/16/21 3:37 PM
  */
 @AutoService(ApplicationLifecycle::class)
-class CommonApplication : ApplicationLifecycle {
+class CommonApplication : ApplicationLifecycle, ForegroundBackgroundObserver {
 
     companion object {
         // 全局CommonApplication
@@ -145,5 +146,9 @@ class CommonApplication : ApplicationLifecycle {
             BuildConfig.VERSION_TYPE != VersionStatus.RELEASE
         )
         return "Bugly -->> init complete"
+    }
+
+    override fun foregroundBackgroundNotify(isForeground: Boolean) {
+        Log.d("ForegroundBackground", "isForeground: $isForeground")
     }
 }
