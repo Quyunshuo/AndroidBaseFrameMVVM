@@ -16,3 +16,8 @@ fun Activity.isAllowScreenCapture(isAllow: Boolean) {
         window?.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
     }
 }
+
+/**
+ * 判断当前 Activity 是否是 [Lifecycle.State.RESUMED]
+ */
+fun AppCompatActivity.isResumed(): Boolean = lifecycle.currentState == Lifecycle.State.RESUMED
