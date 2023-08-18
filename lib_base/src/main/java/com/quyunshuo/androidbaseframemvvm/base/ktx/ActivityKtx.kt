@@ -2,6 +2,8 @@ package com.quyunshuo.androidbaseframemvvm.base.ktx
 
 import android.app.Activity
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
 
 /**
  * 设置当前 [Activity] 是否允许截屏操作
