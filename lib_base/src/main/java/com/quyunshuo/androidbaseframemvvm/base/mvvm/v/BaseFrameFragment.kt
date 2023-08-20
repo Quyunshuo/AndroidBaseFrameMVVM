@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.alibaba.android.arouter.launcher.ARouter
 import com.quyunshuo.androidbaseframemvvm.base.mvvm.vm.BaseViewModel
-import com.quyunshuo.androidbaseframemvvm.base.utils.BindingReflex
 import com.quyunshuo.androidbaseframemvvm.base.utils.RegisterEventBus
 import com.quyunshuo.androidbaseframemvvm.base.utils.EventBusUtils
 
@@ -40,7 +39,7 @@ abstract class BaseFrameFragment<VB : ViewBinding, VM : BaseViewModel> : Fragmen
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = BindingReflex.reflexViewBinding(javaClass, layoutInflater)
+        _binding = createVB()
         return _binding?.root
     }
 

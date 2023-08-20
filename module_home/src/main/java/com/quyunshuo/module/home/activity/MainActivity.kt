@@ -21,6 +21,8 @@ class MainActivity : BaseActivity<HomeActivityMainBinding, HomeViewModel>() {
      */
     override val mViewModel by viewModels<HomeViewModel>()
 
+    override fun createVB() = HomeActivityMainBinding.inflate(layoutInflater)
+
     override fun HomeActivityMainBinding.initView() {}
 
     override fun initObserve() {

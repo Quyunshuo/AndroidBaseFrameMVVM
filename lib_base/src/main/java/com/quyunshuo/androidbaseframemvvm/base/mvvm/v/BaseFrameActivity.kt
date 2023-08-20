@@ -6,6 +6,7 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.alibaba.android.arouter.launcher.ARouter
+import com.quyunshuo.androidbaseframemvvm.base.R
 import com.quyunshuo.androidbaseframemvvm.base.mvvm.vm.BaseViewModel
 import com.quyunshuo.androidbaseframemvvm.base.utils.*
 import com.quyunshuo.androidbaseframemvvm.base.utils.network.AutoRegisterNetListener
@@ -22,11 +23,9 @@ import me.jessyan.autosize.AutoSizeCompat
 abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatActivity(),
     FrameView<VB>, NetworkStateChangeListener {
 
-    protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
-        BindingReflex.reflexViewBinding(javaClass, layoutInflater)
-    }
-
     protected abstract val mViewModel: VM
+
+    protected val mBinding: VB by lazy(mode = LazyThreadSafetyMode.NONE) { createVB() }
 
     /**
      * 是否有 [RegisterEventBus] 注解，避免重复调用 [Class.isAnnotation]
@@ -80,7 +79,7 @@ abstract class BaseFrameActivity<VB : ViewBinding, VM : BaseViewModel> : AppComp
      * @return Unit
      */
     override fun networkConnectChange(isConnected: Boolean) {
-        toast(if (isConnected) "网络已连接" else "网络已断开")
+        toast(if (isConnected) getString(R.string.base_network_connected) else getString(R.string.base_network_disconnected))
     }
 
     override fun onDestroy() {
