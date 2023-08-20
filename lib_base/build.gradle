@@ -2,8 +2,14 @@
 //********** lib_base 的配置文件 ***********
 //****************************************
 
+plugins {
+    alias(libs.plugins.library)
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.hilt)
+    id "kotlin-kapt"
+}
+
 apply from: '../base_lib.gradle'
-apply plugin: 'dagger.hilt.android.plugin'
 
 import com.quyunshuo.androidbaseframemvvm.buildsrc.*
 

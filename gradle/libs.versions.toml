@@ -1,0 +1,20 @@
+[versions]
+# plugin
+agp = "8.1.0"
+kotlin-android = "1.8.0"
+hilt = "2.44"
+
+#lib
+
+
+[libraries]
+
+
+[plugins]
+application = { id = "com.android.application", version.ref = "agp" }
+library = { id = "com.android.library", version.ref = "agp" }
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-android" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+
+[bundles]

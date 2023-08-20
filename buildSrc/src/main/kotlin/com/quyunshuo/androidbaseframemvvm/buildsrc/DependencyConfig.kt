@@ -22,8 +22,8 @@ object DependencyConfig {
         const val ConstraintLayout = "2.1.3"                // 约束布局
         const val TestExtJunit = "1.1.2"
         const val TestEspresso = "3.3.0"
-        const val ActivityKtx = "1.4.0"
-        const val FragmentKtx = "1.4.1"
+        const val ActivityKtx = "1.5.1"
+        const val FragmentKtx = "1.5.2"
         const val MultiDex = "2.0.1"
 
         // Android---------------------------------------------------------------
@@ -35,8 +35,8 @@ object DependencyConfig {
         const val Coroutines = "1.6.1"                      // 协程
 
         // JetPack---------------------------------------------------------------
-        const val Lifecycle = "2.4.1"                       // Lifecycle相关（ViewModel & LiveData & Lifecycle）
-        const val Hilt = "2.38.1"                           // DI框架-Hilt
+        const val Lifecycle = "2.4.1"                       // Lifecycle
+        const val Hilt = "2.44"                             // DI框架-Hilt
 
         // GitHub----------------------------------------------------------------
         const val OkHttp = "4.9.0"                          // OkHttp

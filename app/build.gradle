@@ -4,28 +4,31 @@
 
 import com.quyunshuo.androidbaseframemvvm.buildsrc.*
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'com.alibaba.arouter'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+plugins {
+    alias(libs.plugins.application)
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.hilt)
+    id "kotlin-kapt"
+}
 
 android {
-    compileSdkVersion ProjectBuildConfig.compileSdkVersion
+    namespace 'com.quyunshuo.androidbaseframemvvm'
+    compileSdk ProjectBuildConfig.compileSdkVersion
 
     defaultConfig {
         applicationId ProjectBuildConfig.applicationId
-        minSdkVersion ProjectBuildConfig.minSdkVersion
-        targetSdkVersion ProjectBuildConfig.targetSdkVersion
+        minSdk ProjectBuildConfig.minSdkVersion
+        targetSdk ProjectBuildConfig.targetSdkVersion
         versionCode ProjectBuildConfig.versionCode
         versionName ProjectBuildConfig.versionName
+
         testInstrumentationRunner DependencyConfig.AndroidX.AndroidJUnitRunner
         multiDexKeepProguard file("multidexKeep.pro")
 
         ndk {
             // 设置支持的SO库架构
             //abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
-            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86','x86_64'
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         }
     }
 
@@ -74,14 +77,13 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
-    namespace 'com.quyunshuo.androidbaseframemvvm'
 }
 
 dependencies {

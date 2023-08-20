@@ -4,22 +4,12 @@
 
 import com.quyunshuo.androidbaseframemvvm.buildsrc.*
 
-if (ProjectBuildConfig.isAppMode) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-}
-
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
-
 android {
-    compileSdkVersion ProjectBuildConfig.compileSdkVersion
+    compileSdk ProjectBuildConfig.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion ProjectBuildConfig.minSdkVersion
-        targetSdkVersion ProjectBuildConfig.targetSdkVersion
+        minSdk ProjectBuildConfig.minSdkVersion
+        targetSdk ProjectBuildConfig.targetSdkVersion
         versionCode ProjectBuildConfig.versionCode
         versionName ProjectBuildConfig.versionName
         testInstrumentationRunner DependencyConfig.AndroidX.AndroidJUnitRunner
@@ -32,12 +22,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = "17"
     }
 
     buildFeatures {

@@ -2,6 +2,13 @@
 //********* lib_common 的配置文件 **********
 //****************************************
 
+plugins {
+    alias(libs.plugins.library)
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.hilt)
+    id "kotlin-kapt"
+}
+
 apply from: '../base_lib.gradle'
 
 import com.quyunshuo.androidbaseframemvvm.buildsrc.*

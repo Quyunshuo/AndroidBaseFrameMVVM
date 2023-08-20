@@ -1,6 +1,19 @@
+import com.quyunshuo.androidbaseframemvvm.buildsrc.ProjectBuildConfig
+
 //****************************************
 //******** module_home 的配置文件 *********
 //****************************************
+
+plugins {
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.hilt)
+    id "kotlin-kapt"
+}
+if (ProjectBuildConfig.isAppMode) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 
 apply from: '../base_module.gradle'
 

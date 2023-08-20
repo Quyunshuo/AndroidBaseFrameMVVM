@@ -6,7 +6,7 @@
 
 ## Demo
 
-​		以鸿洋大神的玩安卓开放Api做的一款极简风格的玩安卓，仓库地址：[WanAndroidMVVM](https://github.com/Quyunshuo/WanAndroidMVVM)，该项目正在开发中，由于工作较忙需要一段时间才能完成。如果想看旧版本的demo，可以直接打开demo分支看。
+​		以鸿洋大神的玩安卓开放Api做了简单的页面示例，仓库地址：[WanAndroidMVVM](https://github.com/Quyunshuo/WanAndroidMVVM)
 
 ## 框架图示
 
@@ -388,4 +388,3 @@ fun test() {
 三方库源码笔记（13）-可能是全网第一篇 Coil 的源码分析文章：[https://juejin.cn/post/6897872882051842061](https://juejin.cn/post/6897872882051842061)
 
 【奇技淫巧】新的图片加载库？基于Kotlin协程的图片加载库——Coil：[https://juejin.cn/post/6844904159527829518](https://juejin.cn/post/6844904159527829518)
-
